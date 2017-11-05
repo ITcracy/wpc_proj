@@ -28,7 +28,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Application definition
 
-INSTALLED_APPS = [
+WAGTAIL_APPS = [
     'home',
     'search',
     'wagtail.wagtailforms',
@@ -51,6 +51,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+THIRD_PARTY = [
+    'puput',
+    'compressor',
+    'wagtail.contrib.wagtailsitemaps',
+    'wagtail.contrib.wagtailroutablepage',
+]
+
+INSTALLED_APPS = WAGTAIL_APPS + THIRD_PARTY
+
+PUPUT_AS_PLUGIN = True
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -97,7 +108,7 @@ DATABASES = {'default': env.db()}
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
