@@ -1,0 +1,9 @@
+.env
+wpc_website/.env
+wpc_website/*.pyc
+*.pyc
+wpc_website/wpc_website/__pycache__/*
+wpc_website/search/__pycache__/*
+wpc_website/home/__pycache__/*
+wpc_website/wpc_website/settings/__pycache__/*
+.projectile

@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:10-alpine
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - 5432:5432
+  adminer:
+    image: adminer:4.3.1-standalone
+    environment:
+      ADMINER_DESIGN: 'lucas-sandery'
+    ports:
+      - 8080:8080
+  redis:
+    image: redis:4.0.2-alpine
+    ports:
+      - 6379:6379
