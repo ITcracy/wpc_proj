@@ -8,4 +8,4 @@ wpc_website/home/__pycache__/*
 wpc_website/wpc_website/settings/__pycache__/*
 .projectile
 wpc_website/media/*
-**/.idea/workspace.xml **/.idea/tasks.xml
+*.idea
