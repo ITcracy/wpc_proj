@@ -32,17 +32,17 @@ environ.Env.read_env(os.path.join(PARENT_DIR, '.env'))
 WAGTAIL_APPS = [
     'home',
     'search',
-    'wagtail.wagtailforms',
-    'wagtail.wagtailredirects',
-    'wagtail.wagtailembeds',
-    'wagtail.wagtailsites',
-    'wagtail.wagtailusers',
-    'wagtail.wagtailsnippets',
-    'wagtail.wagtaildocs',
-    'wagtail.wagtailimages',
-    'wagtail.wagtailsearch',
-    'wagtail.wagtailadmin',
-    'wagtail.wagtailcore',
+    'wagtail.contrib.forms',
+    'wagtail.contrib.redirects',
+    'wagtail.embeds',
+    'wagtail.sites',
+    'wagtail.users',
+    'wagtail.snippets',
+    'wagtail.documents',
+    'wagtail.images',
+    'wagtail.search',
+    'wagtail.admin',
+    'wagtail.core',
     'modelcluster',
     'taggit',
     'django.contrib.admin',
@@ -54,27 +54,26 @@ WAGTAIL_APPS = [
 ]
 
 THIRD_PARTY = [
-    'puput',
-    'compressor',
-    'wagtail.contrib.wagtailsitemaps',
-    'wagtail.contrib.wagtailroutablepage',
+    # 'puput',
+    # 'compressor',
+    'wagtail.contrib.sitemaps',
+    'wagtail.contrib.routable_page',
 ]
 
 INSTALLED_APPS = WAGTAIL_APPS + THIRD_PARTY
 
-PUPUT_AS_PLUGIN = True
+# PUPUT_AS_PLUGIN = True
 
 MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'wagtail.wagtailcore.middleware.SiteMiddleware',
-    'wagtail.wagtailredirects.middleware.RedirectMiddleware',
+    'wagtail.core.middleware.SiteMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
 ROOT_URLCONF = 'wpc_website.urls'
