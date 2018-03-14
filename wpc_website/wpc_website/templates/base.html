@@ -1,4 +1,4 @@
-{% load static wagtailuserbar %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
@@ -58,6 +58,9 @@
       {% block extra_css %}
         {# Override this in templates to add extra stylesheets #}
       {% endblock %}
+
+    {% load wagtailuserbar %}
+    {% wagtailuserbar %}
   </head>
   <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
     <main>
