@@ -31,6 +31,7 @@ environ.Env.read_env(os.path.join(PARENT_DIR, '.env'))
 
 WAGTAIL_APPS = [
     'home',
+    'blog',
     'search',
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
