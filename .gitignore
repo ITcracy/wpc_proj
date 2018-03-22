@@ -9,3 +9,4 @@ wpc_website/wpc_website/settings/__pycache__/*
 .projectile
 wpc_website/media/*
 *.idea
+wpc_website/wpc_website/static/js/.tern-port

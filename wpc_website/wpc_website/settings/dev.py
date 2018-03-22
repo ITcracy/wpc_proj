@@ -6,7 +6,6 @@ from .base import *  # noqa
 DEBUG = env('DEBUG')
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
