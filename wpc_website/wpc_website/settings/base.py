@@ -29,6 +29,10 @@ environ.Env.read_env(os.path.join(PARENT_DIR, '.env'))
 
 # Application definition
 
+SECRET_KEY = env('SECRET_KEY')
+
+ALLOWED_HOSTS = ['wpcapp.herokuapp.com', '127.0.0.1', 'localhost']
+
 WAGTAIL_APPS = [
     'home',
     'blog',
