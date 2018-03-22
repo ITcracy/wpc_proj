@@ -1943,12 +1943,13 @@ Google map
 
 .work-title {
   font-size: 14px;
-  color: #fff;
+  color: #ffffff;
   margin: 0 0 6px;
+  font-weight: bold;
 }
 
 .work-descr {
-  color: #aaa;
+  color: #000000;
 }
 
 .work-item:hover .work-image:after {

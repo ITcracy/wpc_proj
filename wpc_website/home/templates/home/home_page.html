@@ -40,7 +40,7 @@
             <div class="row">
               <div class="col-sm-8 col-sm-offset-2">
                 <h2 class="module-title font-alt" style="color:#dddddd;">{{ page.brief_heading }}</h2>
-                <div class="module-subtitle font-serif" style="color:#dddddd;">{{ page.brief_body }}</div>
+                <div class="module-subtitle font-serif" style="color:#dddddd;">{{ page.brief_body|safe }}</div>
               </div>
             </div>
             <div class="row">
@@ -236,7 +236,7 @@
           </div>
         </section>
         <hr class="divider-w">
-        <section class="module bg-dark-60 pt-0 pb-0 parallax-bg testimonial" data-background="{% static '/images/testimonial_bg.jpg">
+        <section class="module bg-dark-60 pt-0 pb-0 parallax-bg testimonial" data-background="{% static '/images/testimonial_bg.jpg' %}">
           <div class="testimonials-slider pt-140 pb-140">
             <ul class="slides">
               <li>
