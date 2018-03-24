@@ -1,1 +1,2 @@
-web: pipenv run gunicorn --chdir wpc_website wpc_website.wsgi
+release: yes "yes" | python wpc_website/manage.py migrate
+web: gunicorn --chdir wpc_website wpc_website.wsgi
