@@ -109,11 +109,12 @@
             </div>
           </div>
         </section>
+        {% if page.featured_works %}
         <section class="module pb-0" id="works">
           <div class="container">
             <div class="row">
               <div class="col-sm-6 col-sm-offset-3">
-                <h2 class="module-title font-alt">Our Works</h2>
+                <h2 class="module-title font-alt">{{ page.featured_works_title }}</h2>
                 <div class="module-subtitle font-serif"></div>
               </div>
             </div>
@@ -130,44 +131,18 @@
               </div>
             </div>
           </div>
+          {% for childpage in page.featured_works.specific.children %}
           <ul class="works-grid works-grid-gut works-grid-3 works-hover-w" id="works-grid">
-            <li class="work-item illustration"><a href="portfolio_single_featured_slider1.html">
-                <div class="work-image"><img src="{% static '/images/work-1.jpg' %}" alt="Portfolio Item"/></div>
+            <li class="work-item illustration"><a href="{{childpage.url}}">
+              {% image childpage.image original as work_image %}
+                <div class="work-image"><img src="{{ work_image.url }}"/></div>
                 <div class="work-caption font-alt">
-                  <h3 class="work-title">{{ page.recent_work_h1 }}</h3>
-                  <div class="work-descr">{{ page.recent_work_body1 }}</div>
-                </div></a></li>
-            <li class="work-item marketing"><a href="portfolio_single_featured_slider1.html">
-                <div class="work-image"><img src="{% static '/images/work-2.jpg' %}" alt="Portfolio Item"/></div>
-                <div class="work-caption font-alt">
-                  <h3 class="work-title">{{ page.recent_work_h2 }}</h3>
-                  <div class="work-descr">{{ page.recent_work_body2 }}</div>
-                </div></a></li>
-            <li class="work-item photography"><a href="portfolio_single_featured_slider1.html">
-                <div class="work-image"><img src="{% static '/images/work-3.jpg' %}" alt="Portfolio Item"/></div>
-                <div class="work-caption font-alt">
-                  <h3 class="work-title">{{ page.recent_work_h3 }}</h3>
-                  <div class="work-descr">{{ page.recent_work_body3 }}</div>
-                </div></a></li>
-            <li class="work-item illustration"><a href="portfolio_single_featured_slider1.html">
-                <div class="work-image"><img src="{% static '/images/work-4.jpg' %}" alt="Portfolio Item"/></div>
-                <div class="work-caption font-alt">
-                  <h3 class="work-title">{{ page.recent_work_h1 }}</h3>
-                  <div class="work-descr">{{ page.recent_work_body1 }}</div>
-                </div></a></li>
-            <li class="work-item marketing"><a href="portfolio_single_featured_slider1.html">
-                <div class="work-image"><img src="{% static '/images/work-5.jpg' %}" alt="Portfolio Item"/></div>
-                <div class="work-caption font-alt">
-                  <h3 class="work-title">{{ page.recent_work_h2 }}</h3>
-                  <div class="work-descr">{{ page.recent_work_body2 }}</div>
-                </div></a></li>
-            <li class="work-item photography"><a href="portfolio_single_featured_slider1.html">
-                <div class="work-image"><img src="{% static '/images/work-6.jpg' %}" alt="Portfolio Item"/></div>
-                <div class="work-caption font-alt">
-                  <h3 class="work-title">{{ page.recent_work_h3 }}</h3>
-                  <div class="work-descr">{{ page.recent_work_body3 }}</div>
+                  <h3 class="work-title">{{ childpage.title }}</h3>
+                  <div class="work-descr">{{ childpage.short_desc }}</div>
                 </div></a></li>
           </ul>
+          {% endfor %}
+          {% endif %}
         </section>
         <section class="module-small bg-dark">
           <div class="container">
@@ -316,10 +291,11 @@
         </section>
         <section class="module" id="news">
           <div class="container">
+            {% if page.featured_blog %}
             <div class="row">
               <div class="col-sm-6 col-sm-offset-3">
-                <h2 class="module-title font-alt">Latest blog posts</h2>
-                <div class="module-subtitle font-serif">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</div>
+                <h2 class="module-title font-alt">{{ page.featured_blog_title }}</h2>
+                <div class="module-subtitle font-serif">{{ page.featured_blog_tagline }}</div>
               </div>
             </div>
             <div class="row multi-columns-row post-columns">
@@ -369,6 +345,7 @@
             <div class="module-title mt-40 pt-40 mb-20 pb-20">
                 <a class=" btn btn-border-w btn-round" href="blog_grid_col_3.html" style="background-color:#000000; color:#ffffff;">More Blogs</a>
             </div>
+            {% endif %}
           </div>
         </section>
 
