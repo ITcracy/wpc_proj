@@ -133,7 +133,7 @@
           </div>
           {% for childpage in page.featured_works.specific.children %}
           <ul class="works-grid works-grid-gut works-grid-3 works-hover-w" id="works-grid">
-            <li class="work-item illustration"><a href="{{childpage.url}}">
+            <li class="work-item illustration"><a href="{{ childpage.url }}">
               {% image childpage.image original as work_image %}
                 <div class="work-image"><img src="{{ work_image.url }}"/></div>
                 <div class="work-caption font-alt">
@@ -142,7 +142,7 @@
                 </div></a></li>
           </ul>
           {% endfor %}
-          {% endif %}
+
         </section>
         <section class="module-small bg-dark">
           <div class="container">
@@ -154,11 +154,12 @@
                 </div>
               </div>
               <div class="col-sm-6 col-md-4 col-lg-2">
-                <div class="callout-btn-box"><a class="btn btn-w btn-round" href="portfolio_boxed_gutter_col_3.html">Lets view portfolio</a></div>
+                <div class="callout-btn-box"><a class="btn btn-w btn-round" href="{{ page.featured_works.url }}">Lets view portfolio</a></div>
               </div>
             </div>
           </div>
         </section>
+          {% endif %}
         <section class="module" id="alt-features">
           <div class="container">
             <div class="row">
@@ -298,52 +299,33 @@
                 <div class="module-subtitle font-serif">{{ page.featured_blog_tagline }}</div>
               </div>
             </div>
+            {% for childpage in page.featured_blog.specific.children %}
             <div class="row multi-columns-row post-columns">
               <div class="col-sm-6 col-md-4 col-lg-4">
                 <div class="post mb-20">
-                  <div class="post-thumbnail"><a href="blog_single_right_sidebar.html"><img src="{% static '/images/post-1.jpg' %}" alt="Blog-post Thumbnail"/></a></div>
+                  {% image childpage.image original as blog_post_image %}
+                  <div class="post-thumbnail"><a href="{{ childpage.url }}"><img src="{{ blog_post_image.url }}" alt="Blog-post Thumbnail"/></a></div>
                   <div class="post-header font-alt">
-                    <h2 class="post-title"><a href="blog_single_right_sidebar.html">Our trip to the Alps</a></h2>
-                    <div class="post-meta">By&nbsp;<a href="blog_single_right_sidebar.html">Mark Stone</a>&nbsp;| 23 November | 3 Comments
+                    <h2 class="post-title"><a href="{{ childpage.url }}">{{ childpage.title }}</a></h2>
+                    {% if childpage.authors %}
+                    {% for author in childpage.authors %}
+                    <div class="post-meta">By&nbsp;<a href="{{ childpage.url }}">{{ author.first_name }} {{ author.last_name }}</a>&nbsp;
+                      {% if childpage.date_published %}
+                      | {{ childpage.date_published }}
+                      {% endif %}
                     </div>
+                    {% endfor %}
                   </div>
                   <div class="post-entry">
-                    <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
+                    <p>{{ childpage.introduction }}</p>
                   </div>
-                  <div class="post-more"><a class="more-link" href="blog_single_right_sidebar.html">Read more</a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="post mb-20">
-                  <div class="post-thumbnail"><a href="blog_single_right_sidebar.html"><img src="{% static '/images/post-2.jpg' %}" alt="Blog-post Thumbnail"/></a></div>
-                  <div class="post-header font-alt">
-                    <h2 class="post-title"><a href="blog_single_right_sidebar.html">Shore after the tide</a></h2>
-                    <div class="post-meta">By&nbsp;<a href="blog_single_right_sidebar.html">Andy River</a>&nbsp;| 11 November | 4 Comments
-                    </div>
+                  <div class="post-more"><a class="more-link" href="{{ childpage.url }}">Read more</a>
                   </div>
-                  <div class="post-entry">
-                    <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
-                  </div>
-                  <div class="post-more"><a class="more-link" href="blog_single_right_sidebar.html">Read more</a></div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="post mb-20">
-                  <div class="post-thumbnail"><a href="blog_single_right_sidebar.html"><img src="{% static '/images/post-3.jpg' %}" alt="Blog-post Thumbnail"/></a></div>
-                  <div class="post-header font-alt">
-                    <h2 class="post-title"><a href="blog_single_right_sidebar.html">We in New Zealand</a></h2>
-                    <div class="post-meta">By&nbsp;<a href="blog_single_right_sidebar.html">Dylan Woods</a>&nbsp;| 5 November | 15 Comments
-                    </div>
-                  </div>
-                  <div class="post-entry">
-                    <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
-                  </div>
-                  <div class="post-more"><a class="more-link" href="blog_single_right_sidebar.html">Read more</a></div>
                 </div>
               </div>
             </div>
             <div class="module-title mt-40 pt-40 mb-20 pb-20">
-                <a class=" btn btn-border-w btn-round" href="blog_grid_col_3.html" style="background-color:#000000; color:#ffffff;">More Blogs</a>
+                <a class=" btn btn-border-w btn-round" href="{{ page.featured_blog.url }}" style="background-color:#000000; color:#ffffff;">More Blogs</a>
             </div>
             {% endif %}
           </div>
