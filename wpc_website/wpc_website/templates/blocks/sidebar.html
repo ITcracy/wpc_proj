@@ -1,0 +1,61 @@
+{% load wagtailcore_tags wagtailimages_tags el_pagination_tags %}
+<div class="col-sm-4 col-md-3 col-md-offset-1 sidebar">
+    <div class="widget">
+        <form role="form">
+            <div class="search-box">
+                <input class="form-control" type="text" placeholder="Search..." />
+                <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+            </div>
+        </form>
+    </div>
+    {% with blog_page.get_child_categories as categories %} {% if categories %}
+    <div class="widget">
+        <h5 class="widget-title font-alt">Blog Categories</h5>
+        <ul class="icon-list">
+            {% for category in categories %}
+            <li><a href="{{ category.url }}">{{ category }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %} {% endwith %} {% with blog_page.get_recent_posts as recent_posts %} {% if recent_posts %}
+    <div class="widget">
+        <h5 class="widget-title font-alt">Recent Posts</h5>
+        <ul class="widget-posts">
+            {% for post in recent_posts %}
+            <li class="clearfix">
+                {% image post.image original as image_post %}
+                <div class="widget-posts-image"><a href="{{ post.url }}"><img src="{{ image_post.url }}" alt="{{ post.title }}"/></a></div>
+                <div class="widget-posts-body">
+                    <div class="widget-posts-title"><a href="{{ post.url }}">{{ post }}</a></div>
+                    {% if post.date_published %}
+                    <div class="widget-posts-meta">{{ post.date_published }}</div>
+                    {% endif %}
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %} {% endwith %} {% with blog_page.get_child_tags as child_tags %} {% if child_tags %}
+    <div class="widget">
+        <h5 class="widget-title font-alt">Tag</h5>
+        <div class="tags font-serif">
+            {% for tag in child_tags %}
+            <a href="{{ tag.url }}" rel="tag">{{ tag }}</a> {% endfor %}
+        </div>
+    </div>
+    {% endif %} {% endwith %} {% if blog_page.introduction %}
+    <div class="widget">
+        <h5 class="widget-title font-alt">Text</h5>{{ blog_page.introduction }}
+    </div>
+    {% endif %}
+    <!-- <div class="widget"> -->
+    <!-- <h5 class="widget-title font-alt">Recent Comments</h5> -->
+    <!-- <ul class="icon-list"> -->
+    <!-- <li>Maria on <a href="#">Designer Desk Essentials</a></li> -->
+    <!-- <li>John on <a href="#">Realistic Business Card Mockup</a></li> -->
+    <!-- <li>Andy on <a href="#">Eco bag Mockup</a></li> -->
+    <!-- <li>Jack on <a href="#">Bottle Mockup</a></li> -->
+    <!-- <li>Mark on <a href="#">Our trip to the Alps</a></li> -->
+    <!-- </ul> -->
+    <!-- </div> -->
+</div>
