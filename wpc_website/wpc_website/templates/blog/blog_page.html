@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load wagtailcore_tags wagtailimages_tags el_pagination_tags %}
+{% block content %}
+<section class="module-small">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+              {% image page.image original as image_hero %}
+                <div class="post">
+                    <div class="post-thumbnail"><img src="{{ image_hero.url }}" alt="{{ page.title }}" /></div>
+                    <div class="post-header ">
+                        <h1 class="post-title font-alt">{{ page.title }}</h1>
+                        <div class="comment-body">
+                          {% if page.introduction %}
+                          {{ page.introduction }}
+                          {% endif %}
+                        </div>
+                        <div class="post-meta font-alt">
+                          By{% for author in page.authors %}
+                          {{ author }}{% if not forloop.last %}, {% endif %}
+                          {% endfor %}&nbsp;| {% if page.date_published %}
+                          {{ page.date_published }}
+                          {% endif %} | {% with page.get_categories as categories %}
+                          {% if categories %}
+                          {% for category in categories %}
+                          {{ category }}{% if not forloop.last %}, {% endif %}
+                          {% endfor %}
+                          {% endif %}
+                          {% endwith %}
+                        </div>
+                    </div>
+                    <div class="post-entry">
+                      {% if page.body %}
+                      {{ page.body }}
+                      {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% include "blocks/sidebar.html" %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

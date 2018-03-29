@@ -1,9 +1,11 @@
 from __future__ import unicode_literals
 
 from django.contrib import messages
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.shortcuts import redirect, render
-from home.blocks import BaseStreamBlock
+from django.template.defaultfilters import slugify
+from django.utils.translation import ugettext_lazy as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
@@ -17,6 +19,8 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
+
+from home.blocks import BaseStreamBlock
 
 
 @register_snippet
@@ -92,6 +96,13 @@ class BlogPeopleRelationship(Orderable, models.Model):
     panels = [SnippetChooserPanel('people')]
 
 
+class BlogCategoryRelationship(Orderable, models.Model):
+    page = ParentalKey('BlogPage', related_name='categories')
+    category = models.ForeignKey(
+        'BlogCategory', related_name='+', on_delete=models.CASCADE)
+    panels = [FieldPanel('category')]
+
+
 class BlogPageTag(TaggedItemBase):
     """
     This model allows us to create a many-to-many relationship between
@@ -100,6 +111,55 @@ class BlogPageTag(TaggedItemBase):
     """
     content_object = ParentalKey(
         'BlogPage', related_name='tagged_items', on_delete=models.CASCADE)
+
+
+@register_snippet
+class BlogCategory(ClusterableModel):
+    name = models.CharField(
+        max_length=80, unique=True, verbose_name=_('Category Name'))
+    slug = models.SlugField(unique=True, max_length=80)
+    parent = models.ForeignKey(
+        'self',
+        blank=True,
+        null=True,
+        related_name="children",
+        on_delete=models.CASCADE,
+        help_text=_(
+            'Categories, unlike tags, can have a hierarchy. You might have a '
+            'Jazz category, and under that have children categories for Bebop'
+            ' and Big Band. Totally optional.'))
+    description = models.CharField(max_length=500, blank=True)
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = _("Blog Category")
+        verbose_name_plural = _("Blog Categories")
+
+    panels = [
+        FieldPanel('name'),
+        FieldPanel('parent'),
+        FieldPanel('description'),
+    ]
+
+    def __str__(self):
+        return self.name
+
+    def clean(self):
+        if self.parent:
+            parent = self.parent
+            if self.parent == self:
+                raise ValidationError('Parent category cannot be self.')
+            if parent.parent and parent.parent == self:
+                raise ValidationError('Cannot have circular Parents.')
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            slug = slugify(self.name)
+            count = BlogCategory.objects.filter(slug=slug).count()
+            if count > 0:
+                slug = '{}-{}'.format(slug, count)
+            self.slug = slug
+        return super(BlogCategory, self).save(*args, **kwargs)
 
 
 class BlogPage(Page):
@@ -137,6 +197,12 @@ class BlogPage(Page):
             label="Author(s)",
             panels=None,
             min_num=1),
+        InlinePanel(
+            'categories',
+            label='Category',
+            panels=None,
+            min_num=0,
+        ),
         FieldPanel('tags'),
     ]
 
@@ -155,6 +221,15 @@ class BlogPage(Page):
         authors = [n.people for n in self.blog_person_relationship.all()]
 
         return authors
+
+    @property
+    def get_categories(self):
+        categories = [n.category for n in self.categories.all()]
+        for category in categories:
+            category.url = '/' + '/'.join(
+                s.strip('/')
+                for s in [self.get_parent().url, 'categories', category.slug])
+        return categories
 
     @property
     def get_tags(self):
@@ -176,6 +251,15 @@ class BlogPage(Page):
     # Specifies what content types can exist as children of BlogPage.
     # Empty list means that no child content types are allowed.
     subpage_types = []
+
+    @property
+    def blog_page(self):
+        return self.get_parent().specific
+
+    def get_context(self, request, *args, **kwargs):
+        context = super(BlogPage, self).get_context(request, *args, **kwargs)
+        context['blog_page'] = self.blog_page
+        return context
 
 
 class BlogIndexPage(RoutablePageMixin, Page):
@@ -218,6 +302,7 @@ class BlogIndexPage(RoutablePageMixin, Page):
         context = super(BlogIndexPage, self).get_context(request)
         context['posts'] = BlogPage.objects.descendant_of(
             self).live().order_by('-date_published')
+        context['blog_page'] = self
         return context
 
     # This defines a Custom view that utilizes Tags. This view will return all
@@ -237,7 +322,23 @@ class BlogIndexPage(RoutablePageMixin, Page):
             return redirect(self.url)
 
         posts = self.get_posts(tag=tag)
-        context = {'tag': tag, 'posts': posts}
+        context = {'tag': tag, 'posts': posts, 'blog_page': self}
+        return render(request, 'blog/blog_index_page.html', context)
+
+    @route('^categories/$', name='categories_archive')
+    @route('^categories/([\w-]+)/$', name='categories_archive')
+    def categories_archive(self, request, category=None):
+        try:
+            category = BlogCategory.objects.get(slug=category)
+        except BlogCategory.DoesNotExist:
+            if category:
+                msg = 'There are no blog posts in "{}" category'.format(
+                    category)
+                messages.add_message(request, messages.INFO, msg)
+            return redirect(self.url)
+
+        posts = self.get_posts(category=category)
+        context = {'category': category, 'posts': posts, 'blog_page': self}
         return render(request, 'blog/blog_index_page.html', context)
 
     def serve_preview(self, request, mode_name):
@@ -246,10 +347,13 @@ class BlogIndexPage(RoutablePageMixin, Page):
 
     # Returns the child BlogPage objects for this BlogPageIndex.
     # If a tag is used then it will filter the posts by tag.
-    def get_posts(self, tag=None):
+    # If a category is used then it will filter the posts by category.
+    def get_posts(self, tag=None, category=None):
         posts = BlogPage.objects.live().descendant_of(self)
         if tag:
             posts = posts.filter(tags=tag)
+        if category:
+            posts = posts.filter(categories__category=category)
         return posts
 
     # Returns the list of Tags for all child posts of this BlogPage.
@@ -260,3 +364,14 @@ class BlogIndexPage(RoutablePageMixin, Page):
             tags += post.get_tags
         tags = sorted(set(tags))
         return tags
+
+    def get_child_categories(self):
+        categories = []
+        for post in self.get_posts():
+            categories += post.get_categories
+        categories = sorted(set(categories))
+        return categories
+
+    def get_recent_posts(self):
+        posts = BlogPage.objects.live().descendant_of(self)[:3]
+        return posts

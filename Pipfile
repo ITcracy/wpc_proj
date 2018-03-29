@@ -11,6 +11,8 @@ wagtail = "*"
 "psycopg2" = "*"
 gunicorn = "*"
 django-environ = "*"
+django-el-pagination = "*"
+"psycopg2-binary" = "*"
 
 
 [dev-packages]

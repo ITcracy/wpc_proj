@@ -63,6 +63,7 @@ THIRD_PARTY = [
     # 'compressor',
     'wagtail.contrib.sitemaps',
     'wagtail.contrib.routable_page',
+    'el_pagination',
 ]
 
 INSTALLED_APPS = WAGTAIL_APPS + THIRD_PARTY
@@ -96,6 +97,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
