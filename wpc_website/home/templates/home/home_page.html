@@ -299,7 +299,7 @@
                 <div class="module-subtitle font-serif">{{ page.featured_blog_tagline }}</div>
               </div>
             </div>
-            {% for childpage in page.featured_blog.specific.children %}
+            {% for childpage in page.featured_blog.specific.get_recent_posts %}
             <div class="row multi-columns-row post-columns">
               <div class="col-sm-6 col-md-4 col-lg-4">
                 <div class="post mb-20">
