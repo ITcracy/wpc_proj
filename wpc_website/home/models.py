@@ -1,9 +1,14 @@
 from __future__ import absolute_import, unicode_literals
 from django.db import models
 from django.db.models.fields import TextField
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, PageChooserPanel
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, PageChooserPanel, StreamFieldPanel
+from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
+
+from .social_media import TwitterBlock
+
+
 class HomePage(Page):
     slider_image1 = models.ForeignKey(
         'wagtailimages.Image',
@@ -72,6 +77,14 @@ class HomePage(Page):
         verbose_name='Works Page Link'
     )
 
+    twitter_block = StreamField([
+        ('twitter', TwitterBlock())
+    ],
+        null=True,
+        blank=True,
+        verbose_name='Twitter Link',
+        help_text='Link the twitter handle here.')
+
     featured_blog_title = models.CharField(
         null=True,
         blank=True,
@@ -132,7 +145,7 @@ class HomePage(Page):
         ], heading="Featured Works Section", classname="collapsible"),
 
         FieldPanel("quote_for_the_day", classname="full"),
-
+        StreamFieldPanel('twitter_block'),
         MultiFieldPanel([
             MultiFieldPanel([
                 FieldPanel('featured_blog_title'),
