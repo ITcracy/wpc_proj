@@ -34,7 +34,7 @@
           </ul>
         </div>
       </section>
-      <div class="main">
+      <div class="">
         <section class="module" id="about" style="background-color:#1b1817;">
           <div class="container">
             <div class="row">
@@ -164,7 +164,7 @@
           <div class="container">
             <div class="row">
               <div class="col-sm-6 col-sm-offset-3">
-                <h2 class="module-title font-alt">Our features</h2>
+                <h2 class="module-title font-alt">Social Board</h2>
                 <div class="module-subtitle font-serif">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</div>
               </div>
             </div>
@@ -187,8 +187,11 @@
                   <h3 class="alt-features-title font-alt">Design</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings.
                 </div>
               </div>
-              <div class="col-md-6 col-lg-6 hidden-xs hidden-sm">
-                <div class="alt-services-image align-center"><img src="{% static '/images/promo.png' %}" alt="Feature Image"></div>
+              <div class="col-md-6 col-lg-6 col-sm-6">
+                <div class="alt-services-image align-center">
+                  {% for block in page.twitter_block %}
+                  {{ block }}
+                  {% endfor %}</div>
               </div>
               <div class="col-sm-6 col-md-3 col-lg-3">
                 <div class="alt-features-item">
@@ -219,20 +222,20 @@
                 <div class="container">
                   <div class="row">
                     <div class="col-sm-12">
-                      <div class="module-icon"><span class="icon-quote"></span></div>
+                      <div class="module-icon" id="img0"><span class="icon-quote"></span></div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-sm-8 col-sm-offset-2">
-                      <blockquote class="testimonial-text font-alt">I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.</blockquote>
+                      <blockquote class="testimonial-text font-alt tweet_parse" id="tweet0" >I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.</blockquote>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-sm-4 col-sm-offset-4">
                       <div class="testimonial-author">
                         <div class="testimonial-caption font-alt">
-                          <div class="testimonial-title">Jack Woods</div>
-                          <div class="testimonial-descr">SomeCompany INC, CEO</div>
+                          <div class="testimonial-title tweet_parse" id="auth0"></div>
+                          <div class="testimonial-descr tweet_parse" id="time0">SomeCompany INC, CEO</div>
                         </div>
                       </div>
                     </div>
@@ -243,20 +246,20 @@
                 <div class="container">
                   <div class="row">
                     <div class="col-sm-12">
-                      <div class="module-icon"><span class="icon-quote"></span></div>
+                      <div class="module-icon" id="img1"><span class="icon-quote"></span></div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-sm-8 col-sm-offset-2">
-                      <blockquote class="testimonial-text font-alt">I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now.</blockquote>
+                      <blockquote class="testimonial-text font-alt tweet_parse" id="tweet1">I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now.</blockquote>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-sm-4 col-sm-offset-4">
                       <div class="testimonial-author">
                         <div class="testimonial-caption font-alt">
-                          <div class="testimonial-title">Jim Stone</div>
-                          <div class="testimonial-descr">SomeCompany INC, CEO</div>
+                          <div class="testimonial-title tweet_parse" id="auth1">Jim Stone</div>
+                          <div class="testimonial-descr tweet_parse" id="time1">SomeCompany INC, CEO</div>
                         </div>
                       </div>
                     </div>
@@ -267,20 +270,188 @@
                 <div class="container">
                   <div class="row">
                     <div class="col-sm-12">
-                      <div class="module-icon"><span class="icon-quote"></span></div>
+                      <div class="module-icon" id="img2"><span class="icon-quote"></span></div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-sm-8 col-sm-offset-2">
-                      <blockquote class="testimonial-text font-alt">I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.</blockquote>
+                      <blockquote class="testimonial-text font-alt tweet_parse" id="tweet2">I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.</blockquote>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-sm-4 col-sm-offset-4">
                       <div class="testimonial-author">
                         <div class="testimonial-caption font-alt">
-                          <div class="testimonial-title">Adele Snow</div>
-                          <div class="testimonial-descr">SomeCompany INC, CEO</div>
+                          <div class="testimonial-title tweet_parse" id="auth2">Adele Snow</div>
+                          <div class="testimonial-descr tweet_parse" id="time2">SomeCompany INC, CEO</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="module-icon" id="img3"><span class="icon-quote"></span></div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                      <blockquote class="testimonial-text font-alt tweet_parse" id="tweet3">I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.</blockquote>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4 col-sm-offset-4">
+                      <div class="testimonial-author">
+                        <div class="testimonial-caption font-alt">
+                          <div class="testimonial-title tweet_parse" id="auth3">Adele Snow</div>
+                          <div class="testimonial-descr tweet_parse" id="time3">SomeCompany INC, CEO</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="module-icon" id="img4"><span class="icon-quote"></span></div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                      <blockquote class="testimonial-text font-alt tweet_parse" id="tweet4">I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.</blockquote>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4 col-sm-offset-4">
+                      <div class="testimonial-author">
+                        <div class="testimonial-caption font-alt">
+                          <div class="testimonial-title tweet_parse" id="auth4">Adele Snow</div>
+                          <div class="testimonial-descr tweet_parse" id="time4">SomeCompany INC, CEO</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="module-icon" id="img5"><span class="icon-quote"></span></div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                      <blockquote class="testimonial-text font-alt tweet_parse" id="tweet5">I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.</blockquote>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4 col-sm-offset-4">
+                      <div class="testimonial-author">
+                        <div class="testimonial-caption font-alt">
+                          <div class="testimonial-title tweet_parse" id="auth5">Adele Snow</div>
+                          <div class="testimonial-descr tweet_parse" id="time5">SomeCompany INC, CEO</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="module-icon" id="img6"><span class="icon-quote"></span></div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                      <blockquote class="testimonial-text font-alt tweet_parse" id="tweet6">I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.</blockquote>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4 col-sm-offset-4">
+                      <div class="testimonial-author">
+                        <div class="testimonial-caption font-alt">
+                          <div class="testimonial-title tweet_parse" id="auth6">Adele Snow</div>
+                          <div class="testimonial-descr tweet_parse" id="time6">SomeCompany INC, CEO</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="module-icon" id="img7"><span class="icon-quote"></span></div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                      <blockquote class="testimonial-text font-alt tweet_parse" id="tweet7">I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.</blockquote>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4 col-sm-offset-4">
+                      <div class="testimonial-author">
+                        <div class="testimonial-caption font-alt">
+                          <div class="testimonial-title tweet_parse" id="auth7">Adele Snow</div>
+                          <div class="testimonial-descr tweet_parse" id="time7">SomeCompany INC, CEO</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="module-icon" id="img8"><span class="icon-quote"></span></div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                      <blockquote class="testimonial-text font-alt tweet_parse" id="tweet8">I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.</blockquote>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4 col-sm-offset-4">
+                      <div class="testimonial-author">
+                        <div class="testimonial-caption font-alt">
+                          <div class="testimonial-title tweet_parse" id="auth8">Adele Snow</div>
+                          <div class="testimonial-descr tweet_parse" id="time8">SomeCompany INC, CEO</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="module-icon" id="img9"><span class="icon-quote"></span></div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                      <blockquote class="testimonial-text font-alt tweet_parse" id="tweet9">I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.</blockquote>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4 col-sm-offset-4">
+                      <div class="testimonial-author">
+                        <div class="testimonial-caption font-alt">
+                          <div class="testimonial-title tweet_parse" id="auth9">Adele Snow</div>
+                          <div class="testimonial-descr tweet_parse" id="time9">SomeCompany INC, CEO</div>
                         </div>
                       </div>
                     </div>
@@ -332,6 +503,6 @@
             {% endif %}
           </div>
         </section>
-
+      </div>
 
 {% endblock %}

@@ -301,8 +301,11 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
 
         if ($('.testimonials-slider').length > 0 ) {
             $('.testimonials-slider').flexslider( {
+                slideshowSpeed:10000,
                 animation: "slide",
-                smoothHeight: true
+                smoothHeight: true,
+                pauseOnAction: true,
+                pauseOnHover: true,
             });
         }
 
