@@ -36,6 +36,7 @@ ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(',')
 WAGTAIL_APPS = [
     'home',
     'blog',
+    'about',
     'search',
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
