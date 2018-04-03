@@ -18,6 +18,20 @@ class ImageBlock(StructBlock):
         template = "blocks/image_block.html"
 
 
+class FullWidthImageBlock(StructBlock):
+    """
+    Custom `StructBlock` for utilizing images with associated caption and
+    attribution data
+    """
+    image = ImageChooserBlock(required=True)
+    caption = CharBlock(required=False)
+    attribution = CharBlock(required=False)
+
+    class Meta:
+        icon = 'image'
+        template = "blocks/image_full_width_block.html"
+
+
 class HeadingBlock(StructBlock):
     """
     Custom `StructBlock` that allows the user to select h2 - h4 sizes for headers
@@ -56,6 +70,23 @@ class BaseStreamBlock(StreamBlock):
     paragraph_block = RichTextBlock(
         icon="fa-paragraph", template="blocks/paragraph_block.html")
     image_block = ImageBlock()
+    block_quote = BlockQuote()
+    embed_block = EmbedBlock(
+        help_text=
+        'Insert an embed URL e.g https://www.youtube.com/embed/SGJFWirQ3ks',
+        icon="fa-s15",
+        template="blocks/embed_block.html")
+
+
+class AboutStreamBlock(StreamBlock):
+    """
+    Define the custom blocks that `StreamField` will utilize
+    """
+    heading_block = HeadingBlock()
+    paragraph_block = RichTextBlock(
+        icon="fa-paragraph", template="blocks/paragraph_block.html")
+    image_block = ImageBlock()
+    full_width_image_block = FullWidthImageBlock()
     block_quote = BlockQuote()
     embed_block = EmbedBlock(
         help_text=

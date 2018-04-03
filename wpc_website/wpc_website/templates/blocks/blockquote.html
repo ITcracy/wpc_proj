@@ -1,5 +1,22 @@
 {% load wagtailimages_tags %}
-
-<blockquote><p class="text">{{ self.text }}</p>
-<footer><p class="attribute_name">{{ self.attribute_name}}</p></footer>
-</blockquote>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="module-icon"><span class="icon-quote"></span></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <blockquote class="testimonial-text font-alt">{{ self.text }}</blockquote>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+      <div class="testimonial-author">
+        <div class="testimonial-caption font-alt">
+          <div class="testimonial-title">{{ self.attribute_name }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

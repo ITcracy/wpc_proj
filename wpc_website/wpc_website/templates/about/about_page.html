@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailimages_tags %}
+
+{% block content %}
+
+{% image page.main_image original as main_image %}
+<section class="module bg-dark-60 about-page-header" data-background="{{ main_image.url }}">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <h2 class="module-title font-alt">{{ page.main_header }}</h2>
+        <div class="module-subtitle font-serif">{{ page.main_body }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+{% if page.about_body %}
+<section class="module mb-10 pb-10">
+  <div class="container" >
+    <div class="row" >
+       {{ page.about_body }}
+    </div>
+  </div>
+</section>
+{% endif %}
+{% image page.video_image original as video_image %}
+<section class="module bg-dark-60" data-background="{{ video_image.url }}">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="video-box">
+          <div class="video-box-icon"><a class="video-pop-up" href="{{ page.about_video }}"><span class="icon-video"></span></a></div>
+          <div class="video-title font-alt">{{ page.video_title }}</div>
+          <div class="video-subtitle font-alt">{{ page.video_intro }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% if page.lower_section %}
+<section class="module mb-10 pb-10">
+  <div class="container" >
+    <div class="row" >
+       {{ page.lower_section }}
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}
