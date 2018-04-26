@@ -5,11 +5,14 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
  /* ---------------------------------------------- */
 (function(){
     $(window).on('load', function() {
-        $('.loader').fadeOut();
-        $('.page-loader').delay(350).fadeOut('slow');
+        $('.social-loader').fadeOut();
+        $('.twitter-loader').delay(350).fadeOut('slow');
     });
 
     $(document).ready(function() {
+
+        $('.loader').fadeOut();
+        $('.page-loader').delay(300).fadeOut('slow');
 
         /* ---------------------------------------------- /*
          * WOW Animation When You Scroll

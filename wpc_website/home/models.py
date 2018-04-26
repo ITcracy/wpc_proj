@@ -82,8 +82,8 @@ class HomePage(Page):
     ],
         null=True,
         blank=True,
-        verbose_name='Twitter Link',
-        help_text='Link the twitter handle here.')
+        verbose_name='Social Board',
+        help_text='Link the social accounts here.')
 
     featured_blog_title = models.CharField(
         null=True,
