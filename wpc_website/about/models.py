@@ -1,11 +1,12 @@
 from django.db import models
 from django.db.models.fields import TextField
-from home.blocks import AboutStreamBlock
 from wagtail.admin.edit_handlers import (FieldPanel, MultiFieldPanel,
                                          StreamFieldPanel)
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
+
+from home.blocks import AboutStreamBlock
 
 
 class AboutPage(Page):
@@ -33,7 +34,7 @@ class AboutPage(Page):
         verbose_name='Video screenshot')
     about_video = models.URLField(
         verbose_name='Video URL',
-        help_text='Paste the video url from youtube.')
+        help_text='Paste the video embed url from youtube.')
     video_header = models.CharField(
         max_length=100,
         verbose_name='Video header',
@@ -61,3 +62,4 @@ class AboutPage(Page):
         ]),
         StreamFieldPanel('lower_section'),
     ]
+    parent_page_types = ['home.HomePage']
