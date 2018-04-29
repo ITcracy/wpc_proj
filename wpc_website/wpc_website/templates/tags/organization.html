@@ -1,0 +1,27 @@
+{% load wagtailcore_tags wagtailimages_tags el_pagination_tags %}
+<div class="row multi-columns-row post-columns">
+  {% if organizations  %}
+  {% paginate organizations %}
+    {% for org in organizations %}
+    <div class="col-sm-6 col-md-4 col-lg-4">
+        <div class="post mb-20">
+            {% image org.image original as org_image %}
+            <div class="post-thumbnail"><a href="{{ org.website }}"><img src="{{ org_image.url }}" alt="Organization logo"/></a></div>
+            <div class="post-header font-alt">
+                <h2 class="post-title"><a href="{{ org.website }}">{{ org.name }}</a></h2>
+                <div class="post-meta">Address:&nbsp;<a href="{{ org.website }}">{{ org.address }}</a>
+                </div>
+            </div>
+            <div class="post-entry">
+                <p>{{ org.intro }}</p>
+            </div>
+            {% if org.website %}
+            <div class="post-more"><a class="more-link" href="{{ org.website }}">Website</a>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="pagination font-alt">{% show_pages %}</div>
+    {% endfor %}
+    {% endif %}
+</div>

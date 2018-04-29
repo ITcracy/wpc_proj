@@ -288,6 +288,7 @@ class BlogIndexPage(RoutablePageMixin, Page):
     ]
 
     # Speficies that only BlogPage objects can live under this index page
+    parent_page_types = ['home.HomePage']
     subpage_types = ['BlogPage']
 
     # Defines a method to access the children of the page (e.g. BlogPage

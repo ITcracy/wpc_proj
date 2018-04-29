@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load wagtailcore_tags wagtailimages_tags org_tags %}
+{% block content %}
+<div class="main">
+  {% image page.image original as image_hero %}
+  <section class="module bg-dark-60 blog-page-header" data-background="{{ image_hero.url }}">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <h2 class="module-title font-alt">{{ page.title }}</h2>
+          <div class="module-subtitle font-serif">{{ page.introduction }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="module">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8">
+          {% include "blocks/messages.html" %}
+          {% organizations %}
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock content %}
