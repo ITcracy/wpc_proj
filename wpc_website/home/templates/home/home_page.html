@@ -96,12 +96,13 @@
           </div>
           <div class="large-text align-center"><a class="section-scroll" href="#works"><i class="fa fa-angle-double-down" style="color:#000000;"></i></a></div>
         </section>
-        <section class="module bg-dark-60" data-background="/images/informal_workers_narrative.png">
+        {% image page.home_video_image original as home_video_image %}
+        <section class="module bg-dark-60" data-background="{{ home_video_image.url }}">
           <div class="container">
             <div class="row">
               <div class="col-sm-12">
                 <div class="video-box">
-                  <div class="video-box-icon"><a class="video-pop-up" href="https://www.youtube-nocookie.com/embed/pFq6XoxbJhg?rel=0&amp;autoplay=1"><span class="icon-video"></span></a></div>
+                  <div class="video-box-icon"><a class="video-pop-up" href="{{ page.home_video_url }}&amp;autoplay=1"><span class="icon-video"></span></a></div>
                   <div class="video-title font-alt">Informal Workers Narrative</div>
                   <div class="video-subtitle font-alt">Watch the video about informal workers narrative discussion</div>
                 </div>
