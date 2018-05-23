@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags wagtailimages_tags field_css %}
+
+{% block content %}
+
+{% image page.image original as main_image %}
+<section class="module bg-dark-60 contact-page-header bg-dark" data-background="{{ main_image.url }}">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <h2 class="module-title font-alt">{{ page.title }}</h2>
+        <div class="module-subtitle font-serif">{{ page.body }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="module">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <form action="{% pageurl page %}" method="POST" role="form">
+          {% csrf_token %}
+          {% if form.subject.errors %}
+          <ol role="alertdialog">
+            {% for error in form.subject.errors %}
+            <li role="alert"><strong></strong><div class="alert alert-danger" role="alert"><strong>{{ error|escape }}</strong></div></li>
+            {% endfor %}
+          </ol>
+          {% endif %}
+          {% for field in form %}
+          <div class="form-group" aria-required={% if field.field.required %}"true"{% else %}"false"{% endif %}>
+            <label class="sr-only" for="name">{{ field.label_tag }}</label>
+            {{ field|addclass:"form-control" }}
+            {% if field.help_text %}
+            <p class="help-block text-danger">{{ field.help_text|safe }}</p>
+            {% endif %}
+          </div>
+          {% endfor %}
+          <input class="form-control btn-success" type="submit" name="" value="Submit" />
+        </form>
+      </div>
+      <div class="col-sm-6">{{ page.additional_info|safe }}</div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+
+{% image page.image original as main_image %}
+<section class="module bg-dark-60 contact-page-header bg-dark" data-background="{{ main_image.url }}">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <h2 class="module-title font-alt">{{ page.title }}</h2>
+        <div class="module-subtitle font-serif">{{ page.body }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="module">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 text-center">{{ page.thank_you_text|safe }}</div>
+    </div>
+  </div>
+</section>
+{% endblock %}
