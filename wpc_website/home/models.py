@@ -60,6 +60,16 @@ class HomePage(Page):
     agenda_h4 = models.CharField(max_length=50)
     agenda_body4 = TextField(max_length=255)
 
+    home_video_image = models.ForeignKey(
+        'wagtailimages.Image',
+        on_delete=models.PROTECT,
+        related_name='+',
+        help_text='Screenshot image of the video',
+        verbose_name='Video screenshot/image.')
+    home_video_url = models.URLField(
+        verbose_name='Video URL',
+        help_text='Paste the video embed url from youtube.')
+
     featured_works_title = models.CharField(
         null=True,
         blank=True,
@@ -136,6 +146,11 @@ class HomePage(Page):
             FieldPanel("agenda_h4"),
             FieldPanel("agenda_body4", classname="full"),
         ], heading="Vision & Agenda", classname="collapsible"),
+
+        MultiFieldPanel([
+            ImageChooserPanel('home_video_image'),
+            FieldPanel('home_video_url'),
+        ], heading="Home Video", classname="collapsible"),
 
         MultiFieldPanel([
             MultiFieldPanel([
