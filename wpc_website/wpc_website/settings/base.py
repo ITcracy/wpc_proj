@@ -38,6 +38,7 @@ WAGTAIL_APPS = [
     'blog',
     'about',
     'organization',
+    'portfolio',
     'search',
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',

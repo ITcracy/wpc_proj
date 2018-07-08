@@ -96,53 +96,52 @@
           </div>
           <div class="large-text align-center"><a class="section-scroll" href="#works"><i class="fa fa-angle-double-down" style="color:#000000;"></i></a></div>
         </section>
+
+        {% if page.home_video_image %}
         {% image page.home_video_image original as home_video_image %}
-        <section class="module bg-dark-60" data-background="{{ home_video_image.url }}">
+        <section class="module bg-dark-60 " data-background="{{ home_video_image.url }}">
+
           <div class="container">
             <div class="row">
               <div class="col-sm-12">
                 <div class="video-box">
                   <div class="video-box-icon"><a class="video-pop-up" href="{{ page.home_video_url }}&amp;autoplay=1"><span class="icon-video"></span></a></div>
-                  <div class="video-title font-alt">Informal Workers Narrative</div>
-                  <div class="video-subtitle font-alt">Watch the video about informal workers narrative discussion</div>
+                  {% if page.home_video_title %}
+                        <div class="video-title font-alt">{{ home_video_title }}</div>
+                  {% endif %}
+                  {% if page.home_video_subtitle %}
+                      <div class="video-subtitle font-alt">{{ home_video_subtitle }}</div>
+                  {% endif %}
                 </div>
               </div>
             </div>
           </div>
         </section>
+        {% endif %}
+
         {% if page.featured_works %}
-        <section class="module pb-0" id="works">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-6 col-sm-offset-3">
+        <section class="module pb-0 pt-30" id="works">
+          <div class="container pb-0 pt-0 mt-0 mb-0">
+            <div class="row pb-0 pt-0 mt-0 mb-0">
+              <div class="col-sm-6 col-sm-offset-3 pb-0 pt-0 mt-0 mb-0">
                 <h2 class="module-title font-alt">{{ page.featured_works_title }}</h2>
                 <div class="module-subtitle font-serif"></div>
               </div>
             </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-12">
-                <ul class="filter font-alt" id="filters">
-                  <li><a class="current wow fadeInUp" href="#" data-filter="*">All</a></li>
-                  <li><a class="wow fadeInUp" href="#" data-filter=".illustration" data-wow-delay="0.2s">{{ page.recent_work_h1 }}</a></li>
-                  <li><a class="wow fadeInUp" href="#" data-filter=".marketing" data-wow-delay="0.4s">{{ page.recent_work_h2 }}</a></li>
-                  <li><a class="wow fadeInUp" href="#" data-filter=".photography" data-wow-delay="0.6s">{{ page.recent_work_h3 }}</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
+
+            <ul class="works-grid works-grid-gut works-grid-3 works-hover-w" id="works-grid">
           {% for childpage in page.featured_works.specific.children %}
-          <ul class="works-grid works-grid-gut works-grid-3 works-hover-w" id="works-grid">
             <li class="work-item illustration"><a href="{{ childpage.url }}">
-              {% image childpage.image original as work_image %}
+              {% image childpage.preview_image original as work_image %}
                 <div class="work-image"><img src="{{ work_image.url }}"/></div>
                 <div class="work-caption font-alt">
-                  <h3 class="work-title">{{ childpage.title }}</h3>
-                  <div class="work-descr">{{ childpage.short_desc }}</div>
+                  <h3 class="work-title pb-10 pt-10">{{ childpage.title }}</h3>
+                  <div class="work-descr pb-10 pt-10">{{ childpage.work_summary|truncatewords:35 }}</div>
                 </div></a></li>
+            {% endfor %}
           </ul>
-          {% endfor %}
+          </div>
+
 
         </section>
         <section class="module-small bg-dark">
@@ -478,7 +477,7 @@
             </div>
             <div class="row multi-columns-row post-columns">
             {% for childpage in page.featured_blog.specific.get_recent_posts %}
-              <div class="col-sm-6 col-md-4 col-lg-4">
+              <div class="col-sm-6 col-md-6 col-lg-6">
                 <div class="post mb-20">
                   {% image childpage.image original as blog_post_image %}
                   <div class="post-thumbnail"><a href="{{ childpage.url }}"><img src="{{ blog_post_image.url }}" alt="Blog-post Thumbnail"/></a></div>

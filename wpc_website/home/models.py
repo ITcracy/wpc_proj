@@ -48,7 +48,7 @@ class HomePage(Page):
     brief_heading = models.CharField(
         max_length=40,
         verbose_name='Brief Title',
-        help_text='WPC in 40 characters.')
+        help_text='One liner for WPC. Max 40 characters.')
     brief_body = TextField(
         max_length=450,
         verbose_name='Brief Body',
@@ -64,13 +64,25 @@ class HomePage(Page):
     agenda_h4 = models.CharField(max_length=50)
     agenda_body4 = TextField(max_length=255)
 
+    home_video_title = models.CharField(
+        null=True,
+        blank=True,
+        max_length=30)
+    home_video_subtitle = models.CharField(
+        null=True,
+        blank=True,
+        max_length=60)
     home_video_image = models.ForeignKey(
         'wagtailimages.Image',
         on_delete=models.PROTECT,
         related_name='+',
+        null=True,
+        blank=True,
         help_text='Screenshot image of the video',
         verbose_name='Video screenshot/image.')
     home_video_url = models.URLField(
+        null=True,
+        blank=True,
         verbose_name='Video URL',
         help_text='Paste the video embed url from youtube.')
 
@@ -103,6 +115,8 @@ class HomePage(Page):
         help_text='Title to displayed for blog section.')
 
     featured_blog_tagline = models.CharField(
+        null=True,
+        blank=True,
         max_length=200,
         verbose_name='Blog Tagline',
         help_text='A tagline for blogs.')
@@ -152,19 +166,12 @@ class HomePage(Page):
             classname="collapsible"),
         MultiFieldPanel(
             [
+                FieldPanel("home_video_title"),
+                FieldPanel("home_video_subtitle"),
                 ImageChooserPanel('home_video_image'),
                 FieldPanel('home_video_url'),
             ],
             heading="Home Video",
-            classname="collapsible"),
-        MultiFieldPanel(
-            [
-                MultiFieldPanel([
-                    FieldPanel('featured_works_title'),
-                    PageChooserPanel('featured_works'),
-                ]),
-            ],
-            heading="Featured Works Section",
             classname="collapsible"),
         MultiFieldPanel(
             [
@@ -188,7 +195,9 @@ class HomePage(Page):
             heading="Featured Blogs Section",
             classname="collapsible")
     ]
-    parent_page_types = []
+    # Specifies parent to HomePage as being BlogIndexPages
+    # parent_page_types = []
+
 
 
 class FormField(AbstractFormField):
