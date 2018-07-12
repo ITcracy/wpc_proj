@@ -1,20 +1,16 @@
 [[source]]
-
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
-
 [packages]
-
 wagtail = "*"
 "psycopg2" = "*"
 gunicorn = "*"
 django-environ = "*"
 django-el-pagination = "*"
 "psycopg2-binary" = "*"
-
+docker-compose = "*"
 
 [dev-packages]
-
 docker-compose = "*"

@@ -131,6 +131,13 @@ class HomePage(Page):
         verbose_name='Blogs Page Link')
 
     quote_for_the_day = models.CharField(max_length=150, null=True, blank=True)
+    quote_image = models.ForeignKey(
+        'wagtailimages.Image',
+        on_delete=models.PROTECT,
+        related_name='+',
+        help_text='Image for the quote.',
+        verbose_name='Quote Image')
+
     content_panels = Page.content_panels + [
         MultiFieldPanel(
             [
@@ -182,7 +189,15 @@ class HomePage(Page):
             ],
             heading="Featured Works Section",
             classname="collapsible"),
-        FieldPanel("quote_for_the_day", classname="full"),
+        MultiFieldPanel(
+            [
+                MultiFieldPanel([
+                    FieldPanel("quote_for_the_day", classname="full"),
+                    ImageChooserPanel('quote_image'),
+                ]),
+            ],
+            heading="Quote Section",
+            classname="collapsible"),
         StreamFieldPanel('twitter_block'),
         MultiFieldPanel(
             [
