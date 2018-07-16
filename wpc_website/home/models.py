@@ -64,14 +64,9 @@ class HomePage(Page):
     agenda_h4 = models.CharField(max_length=50)
     agenda_body4 = TextField(max_length=255)
 
-    home_video_title = models.CharField(
-        null=True,
-        blank=True,
-        max_length=30)
+    home_video_title = models.CharField(null=True, blank=True, max_length=30)
     home_video_subtitle = models.CharField(
-        null=True,
-        blank=True,
-        max_length=60)
+        null=True, blank=True, max_length=60)
     home_video_image = models.ForeignKey(
         'wagtailimages.Image',
         on_delete=models.PROTECT,
@@ -210,9 +205,7 @@ class HomePage(Page):
             heading="Featured Blogs Section",
             classname="collapsible")
     ]
-    # Specifies parent to HomePage as being BlogIndexPages
-    # parent_page_types = []
-
+    parent_page_types = ['wagtailcore.Page']
 
 
 class FormField(AbstractFormField):
