@@ -13,4 +13,4 @@ django-el-pagination = "*"
 docker-compose = "*"
 
 [dev-packages]
-docker-compose = "*"
+"fabric3" = "*"
