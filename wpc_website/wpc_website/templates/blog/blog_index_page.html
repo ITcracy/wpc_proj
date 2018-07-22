@@ -29,7 +29,7 @@
             {% for blog in posts %}
             <div class="col-md-6 col-lg-6">
               <div class="post">
-                {% image blog.image original as image_post %}
+                {% image blog.image fill-1920x1280 as image_post %}
                 <div class="post-thumbnail"><a href="{% pageurl blog %}"><img src="{{ image_post.url }}" alt="{{ blog.title }}"/></a></div>
                 <div class="post-header font-alt">
                   <h2 class="post-title"><a href="{% pageurl blog %}">{{ blog.title }}</a></h2>
@@ -55,7 +55,9 @@
             </div>
             {% endif %}
           </div>
+          {% if posts %}
           <div class="pagination font-alt">{% show_pages %}</div>
+          {% endif %}
         </div>
         {% include "blocks/sidebar.html" %}
       </div>

@@ -29,7 +29,7 @@
             {% for work in works %}
             <div class="col-md-4 col-lg-4">
               <div class="post">
-                {% image work.preview_image original as image_work %}
+                {% image work.preview_image fill-1920x1280 as image_work %}
                 <div class="post-thumbnail"><a href="{% pageurl work %}"><img src="{{ image_work.url }}" alt="{{ work.preview_heading }}"/></a></div>
                 <div class="post-header font-alt">
                   <h2 class="post-title"><a href="{% pageurl work %}">{{ work.preview_heading }}</a></h2>
@@ -41,9 +41,16 @@
               </div>
             </div>
             {% endfor %}
+            {% else %}
+            <div class="col-md-12">
+              <p></p>
+              <h3 class="font-alt">Works coming soon. :)</h3><br/>
+            </div>
             {% endif %}
           </div>
+          {% if works %}
               <div class="pagination font-alt">{% show_pages %}</div>
+          {% endif %}
         </div>
           </div>
         </section>
