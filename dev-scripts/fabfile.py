@@ -2,7 +2,7 @@ import base64
 import os
 import uuid
 
-from fabric.api import cd, env, lcd, local, run
+from fabric.api import cd, env, lcd, local, put, run
 from fabric.contrib.files import append, exists
 
 REPO_URL = 'https://github.com/Codennovation/wpc_proj.git'
@@ -34,10 +34,10 @@ def h_append(*args, **kwargs):
 
 
 def deploy():
-    site_folder = f'/home/{env.user}/Projects/{env.host}'
+    site_folder = f'/home/{env.user}/wpc/wpc_proj'
     h_run(f'mkdir -p {site_folder}')
     if env.host in ('localhost', '127.0.0.1'):
-        os.chdir(site_folder)
+        site_folder = '../'
         with lcd(site_folder):
             _all_process()
     else:
@@ -48,7 +48,10 @@ def deploy():
 def _all_process():
     _get_latest_source()
     _update_virtualenv()
-    _create_or_update_dotenv()
+    if env.host in ('localhost', '127.0.0.1'):
+        _create_or_update_dotenv()
+    else:
+        _copy_env_file()
     _run_docker_compose()
     _update_static_files()
     _update_database()
@@ -66,6 +69,13 @@ def _update_virtualenv():
     h_run('pipenv install')
 
 
+def _copy_env_file():
+    if not h_exists('.env'):
+        put('.env', '.env')
+        append('.env', 'DEBUG=False')
+        append('.env', f'ALLOWED_HOSTS={env.host}')
+
+
 def _create_or_update_dotenv():
     if env.host in ('localhost', '127.0.0.1'):
         h_append('.env', 'DEBUG=True')
@@ -73,12 +83,13 @@ def _create_or_update_dotenv():
         h_append('.env', 'DEBUG=False')
     h_append('.env', f'ALLOWED_HOSTS={env.host}')
     h_append('.env', f'DB_USER={env.user}')
-    db_pass = uuid.uuid4().hex
-    h_append('.env', f'DB_PASSWORD={db_pass}')
     h_append('.env', f'DB_NAME=wpc_db')
-    DATABASE_URL = f'psql://{env.user}:{db_pass}@127.0.0.1:5432/wpc_db'
-    h_append('.env', f'DATABASE_URL={DATABASE_URL}')
     current_contents = h_run('cat .env')
+    if 'DB_PASSWORD' not in current_contents:
+        db_pass = uuid.uuid4().hex
+        h_append('.env', f'DB_PASSWORD={db_pass}')
+        DATABASE_URL = f'psql://{env.user}:{db_pass}@127.0.0.1:5432/wpc_db'
+        h_append('.env', f'DATABASE_URL={DATABASE_URL}')
     if 'SECRET_KEY' not in current_contents:
         new_secret = base64.b64encode(os.urandom(256))
         h_append('.env', f'SECRET_KEY={new_secret}')
