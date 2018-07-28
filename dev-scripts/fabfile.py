@@ -66,7 +66,7 @@ def _get_latest_source():
 
 
 def _update_virtualenv():
-    h_run('pipenv install')
+    h_run('pipenv install --skip-lock')
 
 
 def _copy_env_file():
