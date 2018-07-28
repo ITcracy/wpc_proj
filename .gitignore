@@ -11,3 +11,4 @@ wpc_website/media/*
 *.idea
 wpc_website/wpc_website/static/js/.tern-port
 deactivate/
+wpc_website/static/*
