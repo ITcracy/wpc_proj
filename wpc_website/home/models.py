@@ -128,6 +128,8 @@ class HomePage(Page):
     quote_for_the_day = models.CharField(max_length=150, null=True, blank=True)
     quote_image = models.ForeignKey(
         'wagtailimages.Image',
+        null=True,
+        blank=True,
         on_delete=models.PROTECT,
         related_name='+',
         help_text='Image for the quote.',
