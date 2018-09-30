@@ -1,0 +1,62 @@
+{% load static wagtailcore_tags navigation_tags %}
+<!-- BEGIN FOOTER -->
+        <div class="module-small bg-dark">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="widget">
+                  <h5 class="widget-title font-alt">{{ footer_title }}</h5>
+                  <p>{{ footer_text|safe }}</p>
+
+                  {% if phone_one %}
+                  <p>Phone: {{ phone_one }}
+                      {% if phone_two %}
+                      / {{ phone_two }}
+                      {% endif %}
+                      {% if phone_three %}
+                        /{{ phone_three }}
+                      {% endif %}
+                  </p>
+                  {% endif %}
+
+                  {% if email %}
+                  <p>Email:<a href="" target="_blank">{{ email }}</a></p>
+                  {% endif %}
+                </div>
+
+              </div>
+              <div class="col-sm-offset-4 col-sm-4 ">
+                <div class="widget">
+                  <h5 class="widget-title font-alt">Sitemap</h5>
+                  <ul class="icon-list">
+                    <li><a href="/about">About us</a></li>
+                    <li><a href="/portfolio">Charter of demands</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/organizations">Organizations</a></li>
+                    <li><a href="/contact">Contact </a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="divider-d">
+        <footer class="footer bg-dark">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-5">
+                <p class="copyright font-alt">
+                  Developed with <i class="icon icon-heart"></i> by <a href="https://itcracy.github.io/" target="_blank">ITCracy</a>
+                </p>
+              </div>
+              <div class="col-sm-3">
+                <p class="copyright font-alt">&copy; 2017&nbsp;<a href="{% static 'index.html' %}">WPC</a>, All Rights Reserved</p>
+              </div>
+              <div class="col-sm-4">
+                <div class="footer-social-links"><a href="{{ fb_link }}"><i class="fa fa-facebook"></i></a>
+                    <a href="{{ twitter_link }}"><i class="fa fa-twitter"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>

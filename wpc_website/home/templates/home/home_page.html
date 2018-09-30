@@ -90,7 +90,7 @@
               </div>
 
               <div class="module-title mt-40 pt-40 mb-20 pb-20">
-                  <a class=" btn btn-border-w btn-round" href="about3.html" style="background-color:#000000; color:#ffffff;">More About Us</a>
+                  <a class=" btn btn-border-w btn-round" href="/about" style="background-color:#000000; color:#ffffff;">More About Us</a>
               </div>
             </div>
           </div>
@@ -160,12 +160,16 @@
           </div>
         </section>
           {% endif %}
+
+        {% if page.social_board_title %}
         <section class="module" id="alt-features">
           <div class="container">
             <div class="row">
               <div class="col-sm-6 col-sm-offset-3">
-                <h2 class="module-title font-alt">Social Board</h2>
-                <div class="module-subtitle font-serif">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</div>
+                <h2 class="module-title font-alt">{{ page.social_board_title }}</h2>
+                {% if page.social_board_body %}
+                <div class="module-subtitle font-serif">{{ page.social_board_body }}</div>
+                {% endif %}
               </div>
             </div>
             <div class="row">
@@ -219,6 +223,7 @@
             </div>
           </div>
         </section>
+        {% endif %}
         {% if page.quote_image %}
         {% image page.quote_image original as quote_image %}
         <section class="module bg-dark-60 pt-0 pb-0 parallax-bg testimonial" data-background="{{ quote_image.url }}">
