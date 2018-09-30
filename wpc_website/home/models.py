@@ -1,5 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
+from django.core.validators import RegexValidator
 from django.db import models
 from django.db.models.fields import TextField
 from modelcluster.fields import ParentalKey
@@ -10,6 +11,7 @@ from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.snippets.models import register_snippet
 
 from .social_media import TwitterBlock
 
@@ -54,7 +56,7 @@ class HomePage(Page):
         verbose_name='Brief Body',
         help_text='WPC in short. First words that a user will read about WPC.')
     vision_heading = models.CharField(max_length=30)
-    vision_body = TextField(max_length=150)
+    vision_body = TextField(max_length=200)
     agenda_h1 = models.CharField(max_length=50)
     agenda_body1 = TextField(max_length=255)
     agenda_h2 = models.CharField(max_length=50)
@@ -96,6 +98,18 @@ class HomePage(Page):
         help_text='Will display 3 featured works.',
         verbose_name='Works Page Link')
 
+    social_board_title = models.CharField(
+        null=True,
+        blank=True,
+        max_length=40,
+        help_text='Title to displayed for social board section.')
+
+    social_board_body = TextField(max_length=200,
+                                  blank=True,
+                                  null=True,
+                                  help_text='Text to displayed '
+                                            'just below the social board section.')
+
     twitter_block = StreamField(
         [('twitter', TwitterBlock())],
         null=True,
@@ -125,7 +139,7 @@ class HomePage(Page):
         help_text='Will display 3 featured blogs.',
         verbose_name='Blogs Page Link')
 
-    quote_for_the_day = models.CharField(max_length=150, null=True, blank=True)
+    quote_for_the_day = models.CharField(max_length=200, default="Some Quote")
     quote_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -195,7 +209,16 @@ class HomePage(Page):
             ],
             heading="Quote Section",
             classname="collapsible"),
-        StreamFieldPanel('twitter_block'),
+        MultiFieldPanel(
+            [
+                MultiFieldPanel([
+                    FieldPanel('social_board_title'),
+                    FieldPanel('social_board_body'),
+                    StreamFieldPanel('twitter_block'),
+                ]),
+            ],
+            heading="Social Board Section",
+            classname="collapsible"),
         MultiFieldPanel(
             [
                 MultiFieldPanel([
@@ -255,3 +278,46 @@ class FormPage(AbstractEmailForm):
         ], "Email"),
     ]
     parent_page_types = ['home.HomePage']
+
+
+@register_snippet
+class FooterText(models.Model):
+    """
+    This provides editable text for the site footer. Again it uses the decorator
+    `register_snippet` to allow it to be accessible via the admin. It is made
+    accessible on the template via a template tag defined in home/templatetags/
+    navigation_tags.py
+    """
+    f_title = models.CharField(
+        max_length=100,
+        verbose_name='Title',
+        help_text='Text to displayed as footer title.')
+    f_body = RichTextField(verbose_name='Body')
+
+    phone_regex = RegexValidator(regex=r'^\+?1?\d{8,15}$',
+                                 message="Upto 15 digits allowed.")
+    # validators should be a list
+    phone_one = models.CharField(validators=[phone_regex], max_length=17, blank=True)
+    phone_two = models.CharField(validators=[phone_regex], max_length=17, blank=True)
+    phone_three = models.CharField(validators=[phone_regex], max_length=17, blank=True)
+
+    email = models.EmailField(blank=True)
+    fb_link = models.TextField(blank=True)
+    twitter_link = models.TextField(blank=True)
+
+    panels = [
+        FieldPanel('f_title'),
+        FieldPanel('f_body'),
+        FieldPanel('phone_one'),
+        FieldPanel('phone_two'),
+        FieldPanel('phone_three'),
+        FieldPanel('email'),
+        FieldPanel('fb_link'),
+        FieldPanel('twitter_link')
+    ]
+
+    def __str__(self):
+        return "Footer text"
+
+    class Meta:
+        verbose_name_plural = 'Footer Text'
