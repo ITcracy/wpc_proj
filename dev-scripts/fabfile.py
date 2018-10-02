@@ -71,7 +71,7 @@ def _update_virtualenv():
 
 def _copy_env_file():
     if not h_exists('.env'):
-        put('.env', '.env')
+        put('../.env', '.env')
         append('.env', 'DEBUG=False')
         append('.env', f'ALLOWED_HOSTS={env.host}')
 
