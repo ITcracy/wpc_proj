@@ -37,9 +37,9 @@ class People(ClusterableModel):
     to the database.
     https://github.com/wagtail/django-modelcluster
     """
-    first_name = models.CharField("First name", max_length=254)
-    last_name = models.CharField("Last name", max_length=254)
-    job_title = models.CharField("Job title", max_length=254)
+    first_name = models.CharField("First name", max_length=254, help_text='Max 254 chars.')
+    last_name = models.CharField("Last name", max_length=254, help_text='Max 254 chars.')
+    job_title = models.CharField("Job title", max_length=254, help_text='Max 254 chars.')
 
     image = models.ForeignKey(
         'wagtailimages.Image',
@@ -117,7 +117,7 @@ class BlogPageTag(TaggedItemBase):
 class BlogCategory(ClusterableModel):
     name = models.CharField(
         max_length=80, unique=True, verbose_name=_('Category Name'))
-    slug = models.SlugField(unique=True, max_length=80)
+    slug = models.SlugField(unique=True, max_length=80, help_text='Max 80 chars.')
     parent = models.ForeignKey(
         'self',
         blank=True,
@@ -128,7 +128,8 @@ class BlogCategory(ClusterableModel):
             'Categories, unlike tags, can have a hierarchy. You might have a '
             'Jazz category, and under that have children categories for Bebop'
             ' and Big Band. Totally optional.'))
-    description = models.CharField(max_length=500, blank=True)
+    description = models.CharField(max_length=500, blank=True,
+                                   help_text='Description for the category. Max 500 chars.')
 
     class Meta:
         ordering = ['name']
@@ -181,7 +182,7 @@ class BlogPage(Page):
         help_text=
         'Landscape mode only; horizontal width between 1000px and 3000px.')
     body = StreamField(BaseStreamBlock(), verbose_name="Page body", blank=True)
-    subtitle = models.CharField(blank=True, max_length=255)
+    subtitle = models.CharField(blank=True, max_length=255, help_text='Max 255 chars.')
     tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
     date_published = models.DateField(
         "Date article published", blank=True, null=True)

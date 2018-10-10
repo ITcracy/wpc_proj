@@ -41,16 +41,16 @@ class WorkImagePage(Page):
         help_text='Image for the preview.',
         verbose_name='Preview Image')
     preview_heading = models.CharField(
-        max_length=40,
+        max_length=50,
         verbose_name='Preview Title',
         help_text='One liner for this work that will be displayed '
                   'as a heading with preview image. '
-                  'Max 40 characters.')
+                  'Max 50 characters.')
 
     work_summary = TextField(
         max_length=800,
         verbose_name='Work Summary',
-        help_text='A short summary of the work.')
+        help_text='A short summary of the work. Max 800 chars.')
     work_date = models.DateField(
         verbose_name='Date',
         help_text='Date/Start date of the work.',
@@ -60,12 +60,12 @@ class WorkImagePage(Page):
     work_video_title = models.CharField(
         null=True,
         blank=True,
-        max_length=30)
+        max_length=50, help_text='Max 50 chars.')
 
     work_video_subtitle = models.CharField(
         null=True,
         blank=True,
-        max_length=60)
+        max_length=100, help_text='Max 100 chars.')
 
     work_video_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -122,13 +122,13 @@ class PortfolioIndexPage(Page):
         help_text='Image for the header.',
         verbose_name='Header Image')
     portfolio_heading = models.CharField(
-        max_length=40,
+        max_length=50,
         verbose_name='Portfolio Title',
-        help_text='One liner for all the works. Max 40 characters.')
+        help_text='One liner for all the works. Max 50 chars.')
     portfolio_body = TextField(
-        max_length=450,
+        max_length=500,
         verbose_name='Portfolio Body',
-        help_text='Brief about portfolio.')
+        help_text='Brief about portfolio. Max 500 chars.')
 
     content_panels = Page.content_panels + [
         MultiFieldPanel(

@@ -19,11 +19,11 @@ class AboutPage(Page):
     main_header = models.CharField(
         max_length=100,
         verbose_name='Main header',
-        help_text='Text to displayed on the main image.')
+        help_text='Text to displayed on the main image. Max 100 chars.')
     main_body = TextField(
-        max_length=200,
+        max_length=300,
         verbose_name='Image brief body',
-        help_text='Few lines to be displayed on the image')
+        help_text='Few lines to be displayed on the image. Max 300 chars.')
     about_body = StreamField(
         AboutStreamBlock(), verbose_name="Page body", blank=True)
     video_image = models.ForeignKey(
@@ -36,13 +36,13 @@ class AboutPage(Page):
         verbose_name='Video URL',
         help_text='Paste the video embed url from youtube.')
     video_header = models.CharField(
-        max_length=100,
+        max_length=50,
         verbose_name='Video header',
-        help_text='Text to displayed on top of video image.')
+        help_text='Text to displayed on top of video image. Max 50 chars.')
     video_intro = TextField(
-        max_length=200,
+        max_length=300,
         verbose_name='Video Intro',
-        help_text='Few lines to be displayed on the video image')
+        help_text='Few lines to be displayed on the video image. Max 300 chars.')
     lower_section = StreamField(
         AboutStreamBlock(), verbose_name="Lower section", blank=True)
     content_panels = Page.content_panels + [

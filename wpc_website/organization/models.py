@@ -13,7 +13,7 @@ class Organization(models.Model):
     """
     Database model to store list of organization supporting WPC movement
     """
-    name = models.CharField("Org Name", max_length=100)
+    name = models.CharField("Org Name", max_length=100, help_text='Max 100 chars.')
     address = models.TextField(
         "Address", help_text="Organization full address")
     image = models.ForeignKey(
@@ -29,8 +29,8 @@ class Organization(models.Model):
         help_text='Organization website url')
     intro = models.CharField(
         'Introduction',
-        help_text='A small intro about the organization.',
-        max_length=120,
+        help_text='A small intro about the organization. Max 300 chars.',
+        max_length=300,
         null=True,
         blank=True)
     panels = [

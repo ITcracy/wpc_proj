@@ -16,13 +16,13 @@
                     {% if org.website %}
                     <a href="{{ org.website }}">
                     {% else %}
-                    <a >
+                    <a>
                     {% endif %}
                   {{ org.name }}</a></h2>
                 <div class="post-meta">Address:&nbsp; {% if org.website %}
                     <a href="{{ org.website }}">
                     {% else %}
-                    <a >
+                    <a>
                     {% endif %}
                     {{ org.address }}</a>
                 </div>
@@ -31,7 +31,7 @@
                 <p>{{ org.intro }}</p>
             </div>
             {% if org.website %}
-            <div class="post-more"><a class="more-link" href="{{ org.website }}">Website</a> {% endif %}
+            <div class="post-more">Website:&nbsp;<a class="more-link" href="{{ org.website }}">{{ org.website }}</a> {% endif %}
             </div>
         </div>
     </div>
