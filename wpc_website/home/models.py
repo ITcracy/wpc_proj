@@ -38,37 +38,38 @@ class HomePage(Page):
     slider_h1 = models.CharField(
         max_length=100,
         verbose_name='First Slider Text',
-        help_text='Text to displayed on first image.')
+        help_text='Text to displayed on first image. Max 100 chars.')
     slider_h2 = models.CharField(
         max_length=100,
         verbose_name='Second Slider Text',
-        help_text='Text to displayed on second image.')
+        help_text='Text to displayed on second image. Max 100 chars.')
     slider_h3 = models.CharField(
         max_length=100,
         verbose_name='Third Slider Text',
-        help_text='Text to displayed on third image.')
+        help_text='Text to displayed on third image. Max 100 chars.')
     brief_heading = models.CharField(
-        max_length=40,
+        max_length=50,
         verbose_name='Brief Title',
-        help_text='One liner for WPC. Max 40 characters.')
+        help_text='One liner for WPC. Max 50 characters.')
     brief_body = TextField(
-        max_length=450,
+        max_length=500,
         verbose_name='Brief Body',
-        help_text='WPC in short. First words that a user will read about WPC.')
-    vision_heading = models.CharField(max_length=30)
-    vision_body = TextField(max_length=200)
-    agenda_h1 = models.CharField(max_length=50)
-    agenda_body1 = TextField(max_length=255)
-    agenda_h2 = models.CharField(max_length=50)
-    agenda_body2 = TextField(max_length=255)
-    agenda_h3 = models.CharField(max_length=50)
-    agenda_body3 = TextField(max_length=255)
-    agenda_h4 = models.CharField(max_length=50)
-    agenda_body4 = TextField(max_length=255)
+        help_text='WPC in short. First words that a user will read about WPC. Max 500 chars.')
+    vision_heading = models.CharField(max_length=50, help_text='Max 50 chars.')
+    vision_body = TextField(max_length=250, help_text='Max 250 chars.')
+    agenda_h1 = models.CharField(max_length=50, help_text='Max 50 chars.')
+    agenda_body1 = TextField(max_length=255, help_text='Max 255 chars.')
+    agenda_h2 = models.CharField(max_length=50, help_text='Max 50 chars.')
+    agenda_body2 = TextField(max_length=255, help_text='Max 255 chars.')
+    agenda_h3 = models.CharField(max_length=50, help_text='Max 50 chars.')
+    agenda_body3 = TextField(max_length=255, help_text='Max 255 chars.')
+    agenda_h4 = models.CharField(max_length=50, help_text='Max 50 chars.')
+    agenda_body4 = TextField(max_length=255, help_text='Max 255 chars.')
 
-    home_video_title = models.CharField(null=True, blank=True, max_length=30)
+    home_video_title = models.CharField(null=True, blank=True,
+                                        max_length=50, help_text='Max 50 chars.')
     home_video_subtitle = models.CharField(
-        null=True, blank=True, max_length=60)
+        null=True, blank=True, max_length=100, help_text='Max 100 chars.')
     home_video_image = models.ForeignKey(
         'wagtailimages.Image',
         on_delete=models.PROTECT,
@@ -86,8 +87,8 @@ class HomePage(Page):
     featured_works_title = models.CharField(
         null=True,
         blank=True,
-        max_length=40,
-        help_text='Title to displayed for works section.')
+        max_length=50,
+        help_text='Title to displayed for works section. Max 50 chars.')
 
     featured_works = models.ForeignKey(
         'wagtailcore.Page',
@@ -101,14 +102,15 @@ class HomePage(Page):
     social_board_title = models.CharField(
         null=True,
         blank=True,
-        max_length=40,
-        help_text='Title to displayed for social board section.')
+        max_length=50,
+        help_text='Title to displayed for social board section. Max 50 chars.')
 
-    social_board_body = TextField(max_length=200,
+    social_board_body = TextField(max_length=300,
                                   blank=True,
                                   null=True,
                                   help_text='Text to displayed '
-                                            'just below the social board section.')
+                                            'just below the social board section. '
+                                            'Max 300 chars.')
 
     twitter_block = StreamField(
         [('twitter', TwitterBlock())],
@@ -120,15 +122,15 @@ class HomePage(Page):
     featured_blog_title = models.CharField(
         null=True,
         blank=True,
-        max_length=40,
-        help_text='Title to displayed for blog section.')
+        max_length=50,
+        help_text='Title to displayed for blog section.Max 50 chars.')
 
     featured_blog_tagline = models.CharField(
         null=True,
         blank=True,
         max_length=200,
         verbose_name='Blog Tagline',
-        help_text='A tagline for blogs.')
+        help_text='A tagline for blogs. Max 100 chars.')
 
     featured_blog = models.ForeignKey(
         'wagtailcore.Page',
@@ -139,7 +141,8 @@ class HomePage(Page):
         help_text='Will display 3 featured blogs.',
         verbose_name='Blogs Page Link')
 
-    quote_for_the_day = models.CharField(max_length=200, default="Some Quote")
+    quote_for_the_day = models.CharField(max_length=500, default="Some Quote",
+                                         help_text='Max 500 chars.')
     quote_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -258,8 +261,12 @@ class FormPage(AbstractEmailForm):
         verbose_name='Brief Image Body',
         help_text='Few words to display on main image.')
     additional_info = RichTextField(
+        features=['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'bold',
+                  'italic', 'hr', 'ol', 'ul', 'link', 'document-link'],
         blank=True, help_text='Additional Info about the page.')
-    thank_you_text = RichTextField(blank=True)
+    thank_you_text = RichTextField(blank=True,
+                                   features=['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'bold',
+                                             'italic', 'hr', 'ol', 'ul', 'link', 'document-link'],)
 
     # Note how we include the FormField object via an InlinePanel using the
     # related_name value
@@ -289,10 +296,13 @@ class FooterText(models.Model):
     navigation_tags.py
     """
     f_title = models.CharField(
-        max_length=100,
+        max_length=50,
         verbose_name='Title',
-        help_text='Text to displayed as footer title.')
-    f_body = RichTextField(verbose_name='Body')
+        help_text='Text to displayed as footer title. Max 50 chars.')
+    f_body = RichTextField(verbose_name='Body',
+                           features=['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'bold',
+                                     'italic', 'hr', 'ol', 'ul', 'link', 'document-link'],
+                           )
 
     phone_regex = RegexValidator(regex=r'^\+?1?\d{8,15}$',
                                  message="Upto 15 digits allowed.")

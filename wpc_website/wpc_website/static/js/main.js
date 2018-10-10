@@ -411,7 +411,7 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
 
             // Build carousel
             $(this).owlCarousel( {
-                navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+                navText: ['<i class="fas fa-angle-left"></i>', '<i class="fas fa-angle-right"></i>'],
                 nav: navigation,
                 dots: pagination,
                 loop: true,
@@ -588,7 +588,7 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
                 cache: false,
                 beforeSend: function(result) {
                     submit.empty();
-                    submit.append('<i class="fa fa-cog fa-spin"></i> Wait...');
+                    submit.append('<i class="fas fa-cog fa-spin"></i> Wait...');
                 },
                 success: function(result) {
                     if(result.sendstatus == 1) {

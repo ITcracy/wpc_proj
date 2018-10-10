@@ -68,7 +68,10 @@ class BaseStreamBlock(StreamBlock):
     """
     heading_block = HeadingBlock()
     paragraph_block = RichTextBlock(
-        icon="fa-paragraph", template="blocks/paragraph_block.html")
+        icon="fa-paragraph", template="blocks/paragraph_block.html",
+        features=['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'bold',
+                  'italic', 'hr', 'ol', 'ul', 'link', 'document-link']
+    )
     image_block = ImageBlock()
     block_quote = BlockQuote()
     embed_block = EmbedBlock(
@@ -84,7 +87,9 @@ class AboutStreamBlock(StreamBlock):
     """
     heading_block = HeadingBlock()
     paragraph_block = RichTextBlock(
-        icon="fa-paragraph", template="blocks/paragraph_block.html")
+        icon="fa-paragraph", template="blocks/paragraph_block.html",
+        features=['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'bold',
+                  'italic', 'hr', 'ol', 'ul', 'link', 'document-link'])
     image_block = ImageBlock()
     full_width_image_block = FullWidthImageBlock()
     block_quote = BlockQuote()
