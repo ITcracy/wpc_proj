@@ -1,0 +1,12 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User={username}
+Group=www-data
+WorkingDirectory=/home/{username}/wpc/wpc_proj
+ExecStart={venv_path}/bin/gunicorn --access-logfile - --workers 3 --chdir /home/{username}/wpc/wpc_proj/wpc_website --bind unix:/home/{username}/wpc/wpc_proj/wpc_proj.sock wpc_website.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
