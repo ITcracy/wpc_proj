@@ -1,0 +1,19 @@
+server {
+    listen 80;
+    server_name {hostname};
+    client_max_body_size 50M;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        root /home/{username}/wpc/wpc_proj/wpc_website;
+    }
+    location /media/ {
+        autoindex on;
+        root /home/{username}/wpc/wpc_proj/wpc_website;
+    }
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/{username}/wpc/wpc_proj/wpc_proj.sock;
+    	client_max_body_size 50M;
+    }
+}
