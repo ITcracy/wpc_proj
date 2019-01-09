@@ -8,7 +8,7 @@
                 <div class="post-images-slider">
                   <ul class="slides">
                     {% for carousel_item in page.carousel_items.all %}
-                    {% image carousel_item.image fill-600x400 as image_work %}
+                    {% image carousel_item.image height-500 as image_work %}
 
                     <li><img class="center-block" src="{{ image_work.url }}" alt="Slider Image"/></li>
                       {% endfor %}
