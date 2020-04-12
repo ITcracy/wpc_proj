@@ -5,7 +5,6 @@ name = "pypi"
 
 [packages]
 wagtail = "*"
-"psycopg2" = "*"
 gunicorn = "*"
 django-environ = "*"
 django-el-pagination = "*"
