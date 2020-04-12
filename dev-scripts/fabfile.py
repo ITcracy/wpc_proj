@@ -27,7 +27,9 @@ def _prerequisites():
         with settings(warn_only=True):
             nginx = run("nginx -v")
         if nginx.failed:
-            sudo("apt-get install python3-pip python3-dev nginx git")
+            sudo("apt-get update")
+            sudo("apt-get upgrade")
+            sudo("apt-get install python3 python3-pip python3-dev nginx git")
             sudo("pip3 install pipenv")
             return True
         else:
