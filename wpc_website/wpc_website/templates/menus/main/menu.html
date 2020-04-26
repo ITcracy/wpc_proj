@@ -1,5 +1,5 @@
 {% load menu_tags %}
-<ul class="nav navbar-nav navbar-right">
+
                 {% for item in menu_items %}
     <li class="{{ item.active_class }}">
         <a href="{{ item.href }}">{{ item.text }}</a>
@@ -8,4 +8,3 @@
         {% endif %}
     </li>
 {% endfor %}
-</ul>

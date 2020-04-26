@@ -1,4 +1,5 @@
 {% load static wagtailcore_tags navigation_tags %}
+{% load menu_tags %}
 <!-- BEGIN FOOTER -->
         <div class="module-small bg-dark">
           <div class="container">
@@ -29,11 +30,7 @@
                 <div class="widget">
                   <h5 class="widget-title font-alt">Sitemap</h5>
                   <ul class="icon-list">
-                    <li><a href="/about">About us</a></li>
-                    <li><a href="/portfolio">Charter of demands</a></li>
-                    <li><a href="/blog">Blog</a></li>
-                    <li><a href="/organizations">Organizations</a></li>
-                    <li><a href="/contact">Contact </a></li>
+                    {% main_menu max_levels=3 template="menus/main/menu.html"  %}
                   </ul>
                 </div>
               </div>
