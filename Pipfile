@@ -10,6 +10,7 @@ django-environ = "*"
 django-el-pagination = "*"
 "psycopg2-binary" = "*"
 docker-compose = "*"
+wagtailmenus = "*"
 
 [dev-packages]
 "fabric3" = "*"
