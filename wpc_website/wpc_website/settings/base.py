@@ -66,6 +66,8 @@ WAGTAIL_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'wagtail.contrib.modeladmin',
+    'wagtailmenus',
 ]
 
 THIRD_PARTY = [
@@ -108,6 +110,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.request',
+                'wagtailmenus.context_processors.wagtailmenus',
             ],
         },
     },

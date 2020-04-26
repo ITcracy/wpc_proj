@@ -1244,7 +1244,7 @@ General Styles - Owlcarousel
   font-family: "Roboto Condensed", sans-serif;
   text-transform: uppercase;
   letter-spacing: 3px;
-  font-size: 11px;
+  font-size: 20px;
   font-weight: bolder;
   transition: background, padding 0.4s ease-in-out 0s;
 }
@@ -1264,7 +1264,7 @@ General Styles - Owlcarousel
 .navbar-custom .navbar-brand {
   letter-spacing: 4px;
   font-weight: 400;
-  font-size: 22px;
+  font-size: 32px;
   color: #fff;
 }
 
