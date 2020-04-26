@@ -1,19 +1,11 @@
+{% load menu_tags %}
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#custom-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="/">WPC</a>
         </div>
         <div class="collapse navbar-collapse" id="custom-collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown"><a class="" href="/">Home</a>
-                </li>
-                <li><a href="/about">About us</a></li>
-                <li><a href="/portfolio">Charter of demands</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/organizations">Organizations</a></li>
-                <li><a href="/contact">Contact </a></li>
-
-            </ul>
+{% main_menu max_levels=3 template="menus/main/menu.html"  %}
         </div>
     </div>
 </nav>
