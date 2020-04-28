@@ -64,8 +64,8 @@ class BlockQuote(StructBlock):
 class TextEditorBlock(StructBlock):
     alignment = ChoiceBlock(
         [('left', 'Left'), ('center', 'Center'), ('right', 'Right')],
-        blank=True,
-        required=False
+        blank=False,
+        required=True
     )
     paragraph_text = RichTextBlock(
         icon="fa-paragraph",
