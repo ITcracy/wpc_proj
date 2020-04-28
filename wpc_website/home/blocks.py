@@ -61,17 +61,29 @@ class BlockQuote(StructBlock):
         template = "blocks/blockquote.html"
 
 
+class TextEditorBlock(StructBlock):
+    alignment = ChoiceBlock(
+        [('left', 'Left'), ('center', 'Center'), ('right', 'Right')],
+        blank=True,
+        required=False
+    )
+    paragraph_text = RichTextBlock(
+        icon="fa-paragraph",
+        features=['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'bold',
+                  'italic', 'hr', 'ol', 'ul', 'link', 'document-link'])
+
+    class Meta:
+        icon = "fa-quote-left"
+        template = "blocks/paragraph_block.html"
+
+
 # StreamBlocks
 class BaseStreamBlock(StreamBlock):
     """
     Define the custom blocks that `StreamField` will utilize
     """
     heading_block = HeadingBlock()
-    paragraph_block = RichTextBlock(
-        icon="fa-paragraph", template="blocks/paragraph_block.html",
-        features=['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'bold',
-                  'italic', 'hr', 'ol', 'ul', 'link', 'document-link']
-    )
+    paragraph_block = TextEditorBlock()
     image_block = ImageBlock()
     block_quote = BlockQuote()
     embed_block = EmbedBlock(
@@ -86,10 +98,7 @@ class AboutStreamBlock(StreamBlock):
     Define the custom blocks that `StreamField` will utilize
     """
     heading_block = HeadingBlock()
-    paragraph_block = RichTextBlock(
-        icon="fa-paragraph", template="blocks/paragraph_block.html",
-        features=['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'bold',
-                  'italic', 'hr', 'ol', 'ul', 'link', 'document-link'])
+    paragraph_block = TextEditorBlock()
     image_block = ImageBlock()
     full_width_image_block = FullWidthImageBlock()
     block_quote = BlockQuote()
