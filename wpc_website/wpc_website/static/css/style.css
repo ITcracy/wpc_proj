@@ -921,6 +921,18 @@ blockquote {
   margin-bottom: 70px;
 }
 
+.module-para-left {
+  text-align: left;
+}
+
+.module-para-right {
+  text-align: right;
+}
+
+.module-para-center {
+  text-align: center;
+}
+
 .module-icon {
   text-align: center;
   font-size: 32px;
@@ -1244,7 +1256,7 @@ General Styles - Owlcarousel
   font-family: "Roboto Condensed", sans-serif;
   text-transform: uppercase;
   letter-spacing: 3px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bolder;
   transition: background, padding 0.4s ease-in-out 0s;
 }
