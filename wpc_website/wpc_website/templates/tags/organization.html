@@ -1,39 +1,55 @@
 {% load wagtailcore_tags wagtailimages_tags el_pagination_tags %}
 <div class="row multi-columns-row post-columns">
     {% if organizations %} {% paginate organizations %} {% for org in organizations %}
-    <div class="col-sm-6 col-md-4 col-lg-4">
+
+    <div class="col-sm-6 col-md-6 col-lg-6 ">
+
+        {% image org.image original as org_image %}
         <div class="post mb-20">
-            {% image org.image original as org_image %}
             <div class="post-thumbnail">
                 {% if org.website %}
                 <a href="{{ org.website }}">
+                    <img src="{{ org_image.url }}" alt="Organization logo"/>
+                </a>
                 {% else %}
-                <a >
+                <a>
+                    <img src="{{ org_image.url }}" alt="Organization logo"/>
+                </a>
                 {% endif %}
-              <img src="{{ org_image.url }}" alt="Organization logo"/></a></div>
+
+
+            </div>
             <div class="post-header font-alt">
                 <h2 class="post-title">
                     {% if org.website %}
                     <a href="{{ org.website }}">
+                        {{ org.name }}
+                    </a>
                     {% else %}
                     <a>
+                        {{ org.name }}
+                    </a>
                     {% endif %}
-                  {{ org.name }}</a></h2>
+                  </h2>
                 <div class="post-meta">Address:&nbsp; {% if org.website %}
                     <a href="{{ org.website }}">
+                        {{ org.address }}
+                    </a>
                     {% else %}
                     <a>
+                        {{ org.address }}
+                    </a>
                     {% endif %}
-                    {{ org.address }}</a>
                 </div>
             </div>
+            {% if org.website %}
+            <div class="post-more">Website:&nbsp;<a class="more-link" href="{{ org.website }}">{{ org.website }}</a> </div>{% endif %}
             <div class="post-entry">
                 <p>{{ org.intro }}</p>
             </div>
-            {% if org.website %}
-            <div class="post-more">Website:&nbsp;<a class="more-link" href="{{ org.website }}">{{ org.website }}</a> {% endif %}
-            </div>
+
         </div>
+
     </div>
     <div class="pagination font-alt">{% show_pages %}</div>
     {% endfor %} {% endif %}
