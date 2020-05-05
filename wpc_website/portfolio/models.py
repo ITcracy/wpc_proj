@@ -3,10 +3,11 @@ from django.db import models
 # Create your models here.
 from django.db.models.fields import TextField, DateField
 from modelcluster.fields import ParentalKey
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel
-from wagtail.core.fields import RichTextField
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel, StreamFieldPanel
+from wagtail.core.fields import StreamField
 from wagtail.core.models import Page, Orderable
 from wagtail.images.edit_handlers import ImageChooserPanel
+from home.blocks import BaseStreamBlock
 
 #
 # class WorkPreviewPage(Page):
@@ -81,12 +82,9 @@ class WorkImagePage(Page):
         blank=True,
         help_text='Paste the video embed url from youtube.')
 
-    work_desc = RichTextField(
-        features=['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'bold',
-                  'italic', 'hr', 'ol', 'ul', 'link', 'document-link'],
-        verbose_name='Work Description',
-        help_text='A complete description of the work.'
-    )
+    work_desc = StreamField(
+        BaseStreamBlock(), verbose_name='Work Description',
+        help_text='A complete description of the work.')
 
     content_panels = Page.content_panels + [
             MultiFieldPanel(
@@ -108,7 +106,7 @@ class WorkImagePage(Page):
                 ],
                 heading="Work Video",
                 classname="collapsible"),
-            FieldPanel("work_desc", classname="full"),
+            StreamFieldPanel('work_desc'),
         ]
     # Specifies parent to WorkImagePage as being BlogIndexPages
     parent_page_types = ['PortfolioIndexPage']
@@ -166,8 +164,8 @@ class PortfolioIndexPage(Page):
     # Returns the child PortfolioPage objects for this BlogPageIndex.
     # If a tag is used then it will filter the posts by tag.
     # If a category is used then it will filter the posts by category.
-    def get_works(self):
-        works = PortfolioIndexPage.objects.live().descendant_of(self)
+    def get_recent_works(self):
+        works = WorkImagePage.objects.live().descendant_of(self)[:6]
 
         return works
 
