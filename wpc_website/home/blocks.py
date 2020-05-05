@@ -42,6 +42,11 @@ class HeadingBlock(StructBlock):
                  ('h4', 'H4')],
         blank=True,
         required=False)
+    alignment = ChoiceBlock(
+        [('left', 'Left'), ('center', 'Center'), ('right', 'Right')],
+        blank=False,
+        required=True
+    )
 
     class Meta:
         icon = "title"

@@ -10,7 +10,7 @@
                     {% for carousel_item in page.carousel_items.all %}
                     {% image carousel_item.image height-500 as image_work %}
 
-                    <li><img class="center-block" src="{{ image_work.url }}" alt="Slider Image"/></li>
+                    <li><img class="center-block" src="{{ image_work.url }}" alt="{{ page.title }}"/></li>
                       {% endfor %}
                   </ul>
 

@@ -4,289 +4,290 @@
 
 {% block content %}
 
-        <section class="home-section home-parallax home-fade home-full-height" id="home">
-        <div class="hero-slider">
-          <ul class="slides">
+<section class="home-section home-parallax home-fade home-full-height" id="home">
+    <div class="hero-slider">
+        <ul class="slides">
             {% image page.slider_image1 original as slider_image1 %}
             <li class="bg-dark-30 bg-dark" style="background-image:url({{ slider_image1.url }});">
-              <div class="titan-caption">
-                <div class="caption-content">
-                  <div class="font-alt mb-0 titan-title-size-4">{{ page.slider_h1 }}</div><a class="section-scroll btn btn-border-w btn-round" href="#about">Know More</a>
+                <div class="titan-caption">
+                    <div class="caption-content">
+                        <div class="font-alt mb-0 titan-title-size-4">{{ page.slider_h1 }}</div><a class="section-scroll btn btn-border-w btn-round" href="#about">Know More</a>
+                    </div>
                 </div>
-              </div>
             </li>
             {% image page.slider_image2 original as slider_image2 %}
             <li class="bg-dark-30 bg-dark" style="background-image:url({{ slider_image2.url }});">
-              <div class="titan-caption">
-                <div class="caption-content">
-                  <div class="font-alt mb-30 titan-title-size-4">{{ page.slider_h2 }}</div><a class="section-scroll btn btn-border-w btn-round" href="#about">Know More</a>
+                <div class="titan-caption">
+                    <div class="caption-content">
+                        <div class="font-alt mb-30 titan-title-size-4">{{ page.slider_h2 }}</div><a class="section-scroll btn btn-border-w btn-round" href="#about">Know More</a>
+                    </div>
                 </div>
-              </div>
             </li>
             {% image page.slider_image3 original as slider_image3 %}
             <li class="bg-dark-30 bg-dark" style="background-image:url({{ slider_image3.url }});">
-              <div class="titan-caption">
-                <div class="caption-content">
-                  <div class="font-alt mb-40 titan-title-size-4">{{ page.slider_h3 }}</div><a class="section-scroll btn btn-border-w btn-round" href="#about">Know More</a>
+                <div class="titan-caption">
+                    <div class="caption-content">
+                        <div class="font-alt mb-40 titan-title-size-4">{{ page.slider_h3 }}</div><a class="section-scroll btn btn-border-w btn-round" href="#about">Know More</a>
+                    </div>
                 </div>
-              </div>
             </li>
-          </ul>
+        </ul>
+    </div>
+</section>
+<div class="">
+    <section class="module" id="about" style="background-color:#1b1817;">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <h2 class="module-title font-alt" style="color:#dddddd;">{{ page.brief_heading }}</h2>
+                    <div class="module-subtitle font-serif" style="color:#dddddd;">{{ page.brief_body|safe }}</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2 col-sm-offset-5">
+                    <div class="large-text align-center"><a class="section-scroll" href="#services"><i class="fas fa-angle-double-down" style="color:#cbba79"></i></a></div>
+                </div>
+            </div>
         </div>
-      </section>
-      <div class="">
-        <section class="module" id="about" style="background-color:#1b1817;">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-8 col-sm-offset-2">
-                <h2 class="module-title font-alt" style="color:#dddddd;">{{ page.brief_heading }}</h2>
-                <div class="module-subtitle font-serif" style="color:#dddddd;">{{ page.brief_body|safe }}</div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-2 col-sm-offset-5">
-                <div class="large-text align-center"><a class="section-scroll" href="#services"><i class="fas fa-angle-double-down" style="color:#cbba79"></i></a></div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <hr class="divider-w">
-        <section class="module  mt-20 pt-20 mb-20 pb-20" id="services">
-          <div class="container">
+    </section>
+    <hr class="divider-w">
+    <section class="module  mt-20 pt-20 mb-20 pb-20" id="services">
+        <div class="container">
             <div class="row ">
-              <div class="col-sm-6 col-sm-offset-3">
-                <h2 class="module-title font-alt">{{ page.vision_heading }}</h2>
-                <div class="module-subtitle font-serif">{{ page.vision_body }}</div>
-              </div>
+                <div class="col-sm-6 col-sm-offset-3">
+                    <h2 class="module-title font-alt">{{ page.vision_heading }}</h2>
+                    <div class="module-subtitle font-serif">{{ page.vision_body }}</div>
+                </div>
             </div>
             <div class="row multi-columns-row">
-              <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="features-item">
-                  <div class="features-icon"><span class="fas fa-hand-rock"></span></div>
-                  <h3 class="features-title font-alt">{{ page.agenda_h1 }}</h3>
-                  <p>{{ page.agenda_body1 }}</p>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="features-item">
+                        <div class="features-icon"><span class="fas fa-hand-rock"></span></div>
+                        <h3 class="features-title font-alt">{{ page.agenda_h1 }}</h3>
+                        <p>{{ page.agenda_body1 }}</p>
+                    </div>
                 </div>
-              </div>
-              <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="features-item">
-                  <div class="features-icon"><span class="fas fa-hands-helping"></span></div>
-                  <h3 class="features-title font-alt">{{ page.agenda_h2 }}</h3>
-                  <p>{{ page.agenda_body2 }}</p>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="features-item">
+                        <div class="features-icon"><span class="fas fa-hands-helping"></span></div>
+                        <h3 class="features-title font-alt">{{ page.agenda_h2 }}</h3>
+                        <p>{{ page.agenda_body2 }}</p>
+                    </div>
                 </div>
-              </div>
-              <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="features-item">
-                  <div class="features-icon"><span class="fas fa-users-cog"></span></div>
-                  <h3 class="features-title font-alt">{{ page.agenda_h3 }}</h3>
-                  <p>{{ page.agenda_body3 }}</p>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="features-item">
+                        <div class="features-icon"><span class="fas fa-users-cog"></span></div>
+                        <h3 class="features-title font-alt">{{ page.agenda_h3 }}</h3>
+                        <p>{{ page.agenda_body3 }}</p>
+                    </div>
                 </div>
-              </div>
-              <div class="col-md-3 col-sm-6 col-xs-12 mb-30 pb-30">
-                <div class="features-item">
-                  <div class="features-icon"><span class="fas fa-people-carry"></span></div>
-                  <h3 class="features-title font-alt">{{ page.agenda_h4 }}</h3>
-                  <p>{{ page.agenda_body4 }}</p>
+                <div class="col-md-3 col-sm-6 col-xs-12 mb-30 pb-30">
+                    <div class="features-item">
+                        <div class="features-icon"><span class="fas fa-people-carry"></span></div>
+                        <h3 class="features-title font-alt">{{ page.agenda_h4 }}</h3>
+                        <p>{{ page.agenda_body4 }}</p>
+                    </div>
                 </div>
-              </div>
 
-              <div class="module-title mt-40 pt-40 mb-20 pb-20">
-                  <a class=" btn btn-border-w btn-round" href="/about" style="background-color:#000000; color:#ffffff;">More About Us</a>
-              </div>
+                <div class="module-title mt-40 pt-40 mb-20 pb-20">
+                    <a class=" btn btn-border-w btn-round" href="/about" style="background-color:#000000; color:#ffffff;">More About Us</a>
+                </div>
             </div>
-          </div>
-          <div class="large-text align-center"><a class="section-scroll" href="#works"><i class="fas fa-angle-double-down" style="color:#000000;"></i></a></div>
-        </section>
+        </div>
+        <div class="large-text align-center"><a class="section-scroll" href="#works"><i class="fas fa-angle-double-down" style="color:#000000;"></i></a></div>
+    </section>
 
-        {% if page.home_video_image %}
-        {% image page.home_video_image original as home_video_image %}
-        <section class="module bg-dark-60 " data-background="{{ home_video_image.url }}">
+    {% if page.home_video_image %}
+    {% image page.home_video_image original as home_video_image %}
+    <section class="module bg-dark-60 " data-background="{{ home_video_image.url }}">
 
-          <div class="container">
+        <div class="container">
             <div class="row">
-              <div class="col-sm-12">
-                <div class="video-box">
-                  <div class="video-box-icon"><a class="video-pop-up" href="{{ page.home_video_url }}"><span class="icon-video"></span></a></div>
-                  {% if page.home_video_title %}
+                <div class="col-sm-12">
+                    <div class="video-box">
+                        <div class="video-box-icon"><a class="video-pop-up" href="{{ page.home_video_url }}"><span class="icon-video"></span></a></div>
+                        {% if page.home_video_title %}
                         <div class="video-title font-alt">{{ home_video_title }}</div>
-                  {% endif %}
-                  {% if page.home_video_subtitle %}
-                      <div class="video-subtitle font-alt">{{ home_video_subtitle }}</div>
-                  {% endif %}
+                        {% endif %}
+                        {% if page.home_video_subtitle %}
+                        <div class="video-subtitle font-alt">{{ home_video_subtitle }}</div>
+                        {% endif %}
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-        </section>
-        {% endif %}
+        </div>
+    </section>
+    {% endif %}
 
-        {% if page.featured_works %}
-        <section class="module pb-0 pt-30" id="works">
-          <div class="container pb-0 pt-0 mt-0 mb-0">
+    {% if page.featured_works %}
+    <section class="module pb-0 pt-30" id="works">
+        <div class="container pb-0 pt-0 mt-0 mb-0">
             <div class="row pb-0 pt-0 mt-0 mb-0">
-              <div class="col-sm-6 col-sm-offset-3 pb-0 pt-0 mt-0 mb-0">
-                <h2 class="module-title font-alt">{{ page.featured_works_title }}</h2>
-                <div class="module-subtitle font-serif"></div>
-              </div>
+                <div class="col-sm-6 col-sm-offset-3 pb-0 pt-0 mt-0 mb-0">
+                    <h2 class="module-title font-alt">{{ page.featured_works_title }}</h2>
+                    <div class="module-subtitle font-serif"></div>
+                </div>
             </div>
 
             <ul class="works-grid works-grid-gut works-grid-3 works-hover-w" id="works-grid">
-          {% for childpage in page.featured_works.specific.children %}
-            <li class="work-item illustration"><a href="{{ childpage.url }}">
-              {% image childpage.preview_image original as work_image %}
-                <div class="work-image"><img src="{{ work_image.url }}"/></div>
-                <div class="work-caption font-alt">
-                  <h3 class="work-title pb-10 pt-10">{{ childpage.title }}</h3>
-                  <div class="work-descr pb-10 pt-10">{{ childpage.work_summary|truncatewords:35 }}</div>
-                </div></a></li>
-            {% endfor %}
-          </ul>
-          </div>
+                {% for childpage in page.featured_works.specific.get_recent_works %}
+                <li class="work-item illustration"><a href="{{ childpage.url }}">
+                        {% image childpage.preview_image original as work_image %}
+                        <div class="work-image"><img src="{{ work_image.url }}" /></div>
+                        <div class="work-caption font-alt">
+                            <h3 class="work-title pb-10 pt-10">{{ childpage.title }}</h3>
+                            <div class="work-descr pb-10 pt-10">{{ childpage.work_summary|truncatewords:35 }}</div>
+                        </div>
+                    </a></li>
+                {% endfor %}
+            </ul>
+        </div>
 
 
-        </section>
-        <section class="module-small bg-dark">
-          <div class="container">
+    </section>
+    <section class="module-small bg-dark">
+        <div class="container">
             <div class="row">
-              <div class="col-sm-6 col-md-8 col-lg-6 col-lg-offset-2">
-                <div class="callout-text font-alt">
-                  <h3 class="callout-title">Want to see more works?</h3>
-                  <p>We are always open to interesting projects.</p>
+                <div class="col-sm-6 col-md-8 col-lg-6 col-lg-offset-2">
+                    <div class="callout-text font-alt">
+                        <h3 class="callout-title">Want to see more works?</h3>
+                        <p>We are always open to interesting projects.</p>
+                    </div>
                 </div>
-              </div>
-              <div class="col-sm-6 col-md-4 col-lg-2">
-                <div class="callout-btn-box"><a class="btn btn-w btn-round" href="{{ page.featured_works.url }}">Lets view portfolio</a></div>
-              </div>
-            </div>
-          </div>
-        </section>
-          {% endif %}
-
-        {% if page.social_board_title %}
-        <section class="module" id="alt-features">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-6 col-sm-offset-3">
-                <h2 class="module-title font-alt">{{ page.social_board_title }}</h2>
-                {% if page.social_board_body %}
-                <div class="module-subtitle font-serif">{{ page.social_board_body }}</div>
-                {% endif %}
-              </div>
-            </div>
-            <div class="row">
-              <!-- <div class="col-sm-6 col-md-3 col-lg-3"> -->
-              <!-- <div class="alt-features-item"> -->
-              <!-- <div class="alt-features-icon"><span class="icon-strategy"></span></div> -->
-              <!-- <h3 class="alt-features-title font-alt">Branding</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings. -->
-              <!-- </div> -->
-              <!-- <div class="alt-features-item"> -->
-              <!-- <div class="alt-features-icon"><span class="icon-tools-2"></span></div> -->
-              <!-- <h3 class="alt-features-title font-alt">Development</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings. -->
-              <!-- </div> -->
-              <!-- <div class="alt-features-item"> -->
-              <!-- <div class="alt-features-icon"><span class="icon-target"></span></div> -->
-              <!-- <h3 class="alt-features-title font-alt">Marketing</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings. -->
-              <!-- </div> -->
-              <!-- <div class="alt-features-item"> -->
-              <!-- <div class="alt-features-icon"><span class="icon-tools"></span></div> -->
-              <!-- <h3 class="alt-features-title font-alt">Design</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings. -->
-              <!-- </div> -->
-              <!-- </div> -->
-              <div class="">
-
-                <div class="alt-services-image align-center" id="twitter_block">
-                  <div class="twitter-loader">
-        <div class="social-loader">Loading...</div>
-      </div>
-                  {% for block in page.twitter_block %}
-                  {{ block }}
-                  {% endfor %}
+                <div class="col-sm-6 col-md-4 col-lg-2">
+                    <div class="callout-btn-box"><a class="btn btn-w btn-round" href="{{ page.featured_works.url }}">Lets view portfolio</a></div>
                 </div>
-              </div>
-              <!-- <div class="col-sm-6 col-md-3 col-lg-3"> -->
-              <!-- <div class="alt-features-item"> -->
-              <!-- <div class="alt-features-icon"><span class="icon-camera"></span></div> -->
-              <!-- <h3 class="alt-features-title font-alt">Photography</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings. -->
-              <!-- </div> -->
-              <!-- <div class="alt-features-item"> -->
-              <!-- <div class="alt-features-icon"><span class="icon-mobile"></span></div> -->
-              <!-- <h3 class="alt-features-title font-alt">Mobile</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings. -->
-              <!-- </div> -->
-              <!-- <div class="alt-features-item"> -->
-              <!-- <div class="alt-features-icon"><span class="icon-linegraph"></span></div> -->
-              <!-- <h3 class="alt-features-title font-alt">Music</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings. -->
-              <!-- </div> -->
-              <!-- <div class="alt-features-item"> -->
-              <!-- <div class="alt-features-icon"><span class="icon-basket"></span></div> -->
-              <!-- <h3 class="alt-features-title font-alt">Shop</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings. -->
-              <!-- </div> -->
-              <!-- </div> -->
             </div>
-          </div>
-        </section>
-        {% endif %}
-        {% if page.quote_image %}
-        {% image page.quote_image original as quote_image %}
-        <section class="module bg-dark-60 pt-0 pb-0 parallax-bg testimonial" data-background="{{ quote_image.url }}">
-            <div class="container pt-140 pb-140">
+        </div>
+    </section>
+    {% endif %}
+
+    {% if page.social_board_title %}
+    <section class="module" id="alt-features">
+        <div class="container">
             <div class="row">
-              <div class="col-sm-6 col-sm-offset-3">
-                <div class="module-subtitle font-serif">{{ page.quote_for_the_day }}</div>
-              </div>
+                <div class="col-sm-6 col-sm-offset-3">
+                    <h2 class="module-title font-alt">{{ page.social_board_title }}</h2>
+                    {% if page.social_board_body %}
+                    <div class="module-subtitle font-serif">{{ page.social_board_body }}</div>
+                    {% endif %}
+                </div>
             </div>
-          </div>
-        </section>
-        {% endif %}
-        <section class="module" id="news">
-          <div class="container">
-        {% if page.featured_blog %}
+
+                <!-- <div class="col-sm-6 col-md-3 col-lg-3"> -->
+                <!-- <div class="alt-features-item"> -->
+                <!-- <div class="alt-features-icon"><span class="icon-strategy"></span></div> -->
+                <!-- <h3 class="alt-features-title font-alt">Branding</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings. -->
+                <!-- </div> -->
+                <!-- <div class="alt-features-item"> -->
+                <!-- <div class="alt-features-icon"><span class="icon-tools-2"></span></div> -->
+                <!-- <h3 class="alt-features-title font-alt">Development</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings. -->
+                <!-- </div> -->
+                <!-- <div class="alt-features-item"> -->
+                <!-- <div class="alt-features-icon"><span class="icon-target"></span></div> -->
+                <!-- <h3 class="alt-features-title font-alt">Marketing</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings. -->
+                <!-- </div> -->
+                <!-- <div class="alt-features-item"> -->
+                <!-- <div class="alt-features-icon"><span class="icon-tools"></span></div> -->
+                <!-- <h3 class="alt-features-title font-alt">Design</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings. -->
+                <!-- </div> -->
+                <!-- </div> -->
+                <div class="md-8">
+
+                    <div class="alt-services-image align-center" id="twitter_block">
+                        <div class="twitter-loader">
+                            <div class="social-loader">Loading...</div>
+                        </div>
+                        {% for block in page.twitter_block %}
+                        {{ block }}
+                        {% endfor %}
+                    </div>
+                </div>
+                <!-- <div class="col-sm-6 col-md-3 col-lg-3"> -->
+                <!-- <div class="alt-features-item"> -->
+                <!-- <div class="alt-features-icon"><span class="icon-camera"></span></div> -->
+                <!-- <h3 class="alt-features-title font-alt">Photography</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings. -->
+                <!-- </div> -->
+                <!-- <div class="alt-features-item"> -->
+                <!-- <div class="alt-features-icon"><span class="icon-mobile"></span></div> -->
+                <!-- <h3 class="alt-features-title font-alt">Mobile</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings. -->
+                <!-- </div> -->
+                <!-- <div class="alt-features-item"> -->
+                <!-- <div class="alt-features-icon"><span class="icon-linegraph"></span></div> -->
+                <!-- <h3 class="alt-features-title font-alt">Music</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings. -->
+                <!-- </div> -->
+                <!-- <div class="alt-features-item"> -->
+                <!-- <div class="alt-features-icon"><span class="icon-basket"></span></div> -->
+                <!-- <h3 class="alt-features-title font-alt">Shop</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings. -->
+                <!-- </div> -->
+                <!-- </div> -->
+            </div>
+        </div>
+    </section>
+    {% endif %}
+    {% if page.quote_image %}
+    {% image page.quote_image original as quote_image %}
+    <section class="module bg-dark-60 pt-0 pb-0 parallax-bg testimonial" data-background="{{ quote_image.url }}">
+        <div class="container pt-140 pb-140">
             <div class="row">
-              <div class="col-sm-6 col-sm-offset-3">
-                <h2 class="module-title font-alt">{{ page.featured_blog_title }}</h2>
-                <div class="module-subtitle font-serif">{{ page.featured_blog_tagline }}</div>
-              </div>
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="module-subtitle font-serif">{{ page.quote_for_the_day }}</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+    <section class="module" id="news">
+        <div class="container">
+            {% if page.featured_blog %}
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <h2 class="module-title font-alt">{{ page.featured_blog_title }}</h2>
+                    <div class="module-subtitle font-serif">{{ page.featured_blog_tagline }}</div>
+                </div>
             </div>
             <div class="row multi-columns-row post-columns">
-          {% if page.featured_blog.specific.get_recent_posts %}
-            {% for childpage in page.featured_blog.specific.get_recent_posts %}
-              <div class="col-sm-6 col-md-4 col-lg-4">
-                <div class="post mb-20">
-                  {% image childpage.image original as blog_post_image %}
-                  <div class="post-thumbnail"><a href="{{ childpage.url }}"><img src="{{ blog_post_image.url }}" alt="Blog-post Thumbnail"/></a></div>
-                  <div class="post-header font-alt">
-                    <h2 class="post-title"><a href="{{ childpage.url }}">{{ childpage.title }}</a></h2>
-                    {% if childpage.authors %}
-                    {% for author in childpage.authors %}
-                    <div class="post-meta">By&nbsp;<a href="{{ childpage.url }}">{{ author.first_name }} {{ author.last_name }}</a>&nbsp;
-                      {% if childpage.date_published %}
-                      | {{ childpage.date_published }}
-                      {% endif %}
+                {% if page.featured_blog.specific.get_recent_posts %}
+                {% for childpage in page.featured_blog.specific.get_recent_posts %}
+                <div class="col-sm-6 col-md-4 col-lg-4">
+                    <div class="post mb-20">
+                        {% image childpage.image original as blog_post_image %}
+                        <div class="post-thumbnail"><a href="{{ childpage.url }}"><img src="{{ blog_post_image.url }}" alt="Blog-post Thumbnail" /></a></div>
+                        <div class="post-header font-alt">
+                            <h2 class="post-title"><a href="{{ childpage.url }}">{{ childpage.title }}</a></h2>
+                            {% if childpage.authors %}
+                            {% for author in childpage.authors %}
+                            <div class="post-meta">By&nbsp;<a href="{{ childpage.url }}">{{ author.first_name }} {{ author.last_name }}</a>&nbsp;
+                                {% if childpage.date_published %}
+                                | {{ childpage.date_published }}
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="post-entry">
+                            <p>{{ childpage.introduction|truncatewords:35 }}</p>
+                        </div>
+                        <div class="post-more"><a class="more-link" href="{{ childpage.url }}">Read more</a>
+                        </div>
                     </div>
-                    {% endfor %}
-                    {% endif %}
-                  </div>
-                  <div class="post-entry">
-                    <p>{{ childpage.introduction|truncatewords:35 }}</p>
-                  </div>
-                  <div class="post-more"><a class="more-link" href="{{ childpage.url }}">Read more</a>
-                  </div>
                 </div>
-              </div>
-            {% endfor %}
+                {% endfor %}
             </div>
 
             <div class="module-title mt-40 pt-40 mb-20 pb-20">
                 <a class=" btn btn-border-w btn-round" href="{{ page.featured_blog.url }}" style="background-color:#000000; color:#ffffff;">More Blogs</a>
             </div>
-          {% endif %}
-          {% else %}
+            {% endif %}
+            {% else %}
             <div class="col-md-12">
-              <p></p>
-              <h3 class="font-alt">Blog Posts Coming Soon. :)</h3><br/>
+                <p></p>
+                <h3 class="font-alt">Blog Posts Coming Soon. :)</h3><br />
             </div>
-        {% endif %}
-          </div>
-        </section>
-      </div>
+            {% endif %}
+        </div>
+    </section>
+</div>
 
 {% endblock %}
 {% block extra_js %}
@@ -296,4 +297,3 @@
 
 </script>
 {% endblock %}
-
