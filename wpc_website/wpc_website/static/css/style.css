@@ -163,7 +163,7 @@ a,
 .module,
 .module-small {
   position: relative;
-  padding: 140px 0;
+  padding: 60px 0;
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: cover;
@@ -171,15 +171,15 @@ a,
 
 /* Module header */
 .module-small {
-  padding: 70px 0;
+  padding: 40x 0;
 }
 
 .module-extra-small {
-  padding: 25px 0px;
+  padding: 15px 0px;
 }
 
 .module-medium {
-  padding: 75px 0px;
+  padding: 45px 0px;
 }
 
 .holder-w {
@@ -883,6 +883,9 @@ blockquote {
   font-style: italic;
   font-size: 15px;
   padding: 0;
+  background-color: #000000;
+  color: #FFFFFF;
+  background: light;
 }
 
 .font-alt {
@@ -1437,16 +1440,6 @@ General Styles - Owlcarousel
   background: rgba(2, 2, 2, 0.1);
 }
 
-/* Pricing Page Header */
-.pricing-page-header {
-  background-position: 40% 14%;
-  background-repeat: no-repeat;
-}
-
-.pricing-page-header:before {
-  background: rgba(2, 2, 2, 0.6);
-}
-
 /* Gallery Page Header */
 .gallery-page-header {
   background-position: 50% 0%;
@@ -1480,19 +1473,6 @@ General Styles - Owlcarousel
 
 .blog-page-header:before {
   background: rgba(2, 2, 2, 0.3);
-}
-
-/* Restaurant menu Page Header */
-.restaurant-menu-bg:before {
-  background: rgba(2, 2, 2, 0.4);
-}
-
-.restaurant-page-header:before {
-  background: rgba(0, 0, 0, 0.45);
-}
-
-.restaurant-image-overlay:before {
-  background-color: rgba(2, 2, 2, 0.25);
 }
 
 /* Portfolio Page Header */
@@ -1619,210 +1599,6 @@ Google map
   font-size: 18px;
   color: #111;
   margin: 16px 0 15px;
-}
-
-/*--------------------------------------------------------------
-	Team
---------------------------------------------------------------*/
-.team-item {
-  position: relative;
-  text-align: center;
-}
-
-.team-image {
-  position: relative;
-  overflow: hidden;
-}
-
-.team-image img {
-  width: 100%;
-}
-
-.team-image:after {
-  position: absolute;
-  background: transparent;
-  content: " ";
-  display: block;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1;
-}
-
-.team-detail {
-  position: absolute;
-  width: 100%;
-  opacity: 0;
-  bottom: 100%;
-  left: 0;
-  z-index: 2;
-  text-align: center;
-  font-size: 12px;
-  color: #aaa;
-  padding: 20px;
-}
-
-.team-detail h5 {
-  font-size: 16px;
-}
-
-.team-detail p {
-  font-size: 14px;
-}
-
-.team-social a {
-  display: inline-block;
-  color: #aaa;
-  padding: 5px 6px;
-}
-
-.team-social a:hover {
-  color: #FFF;
-}
-
-.team-descr {
-  margin: 20px 0 0;
-}
-
-.team-name {
-  font-size: 14px;
-  color: #111;
-}
-
-.team-role {
-  font-size: 11px;
-  color: #aaa;
-}
-
-.team-item:hover .team-image:after {
-  background: rgba(0, 0, 0, 0.6);
-}
-
-.team-item:hover .team-detail {
-  opacity: 1;
-  bottom: 50%;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-}
-
-/*--------------------------------------------------------------
-	Restaurant Menu
---------------------------------------------------------------*/
-.menu {
-  border-bottom: 1px dotted #e5e5e5;
-  padding: 0 0 10px;
-  margin: 0 0 20px;
-}
-
-.menu-title,
-.menu-price {
-  margin: 0 0 10px;
-  font-size: 14px;
-  color: #111;
-}
-
-.menu-price-detail {
-  position: relative;
-  text-align: right;
-}
-
-/*--------------------------------------------------------------
-	Price Table
---------------------------------------------------------------*/
-.price-table {
-  background: #fff;
-  border: 1px solid #eaeaea;
-  padding: 25px 20px;
-  margin: 15px 0 30px;
-  border-radius: 2px;
-  text-align: center;
-}
-
-.price-table:hover {
-  border-color: #CACACA;
-}
-
-.price-table.best {
-  margin: 0 0 30px;
-}
-
-.price-table .small {
-  margin: 0;
-}
-
-.borderline {
-  position: relative;
-  background: #eaeaea;
-  display: block;
-  height: 1px;
-  width: 100%;
-  margin: 20px 0 15px;
-}
-
-.borderline:before {
-  position: absolute;
-  background: #eaeaea;
-  content: "";
-  bottom: -7px;
-  left: 50%;
-  height: 14px;
-  width: 14px;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  margin-left: -7px;
-}
-
-.borderline:after {
-  position: absolute;
-  background: #fff;
-  content: "";
-  bottom: -5px;
-  left: 50%;
-  height: 16px;
-  width: 16px;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  margin-left: -8px;
-}
-
-.price-table h4 {
-  color: #111;
-  margin: 0;
-}
-
-.price-table p.price {
-  font-size: 60px;
-  color: #111;
-  padding: 0;
-  margin: 0 0 0 -10px;
-}
-
-.price-table p.price span {
-  display: inline-block;
-  vertical-align: top;
-  font-size: 16px;
-  padding-top: 25px;
-}
-
-.price-details {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 23px;
-}
-
-.price-details li {
-  padding: 7px 0;
-}
-
-.price-details li > span {
-  text-decoration: line-through;
-  color: #aaa;
 }
 
 /*--------------------------------------------------------------
@@ -2022,7 +1798,7 @@ Google map
 
 .work-details-title {
   color: #111;
-  margin: 0 0 20px;
+  margin: 0 0 10px;
 }
 
 .work-details ul {

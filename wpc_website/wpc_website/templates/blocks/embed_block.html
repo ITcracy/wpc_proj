@@ -1,3 +1,25 @@
 {% load wagtailimages_tags %}
 
-{{ self }}
+{% if self.alignment == 'left' %}
+    <div class="container" >
+    <div class="row module-para-left" >
+       {{ self.embed_block }}
+    </div>
+  </div>
+
+    {% elif self.alignment == 'center' %}
+        <div class="container" >
+    <div class="row module-para-center" >
+       {{ self.embed_block }}
+    </div>
+  </div>
+
+    {% elif self.alignment == 'right' %}
+        <div class="container" >
+    <div class="row module-para-right" >
+       {{ self.embed_block }}
+    </div>
+  </div>
+
+{% endif %}
+

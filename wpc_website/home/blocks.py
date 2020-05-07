@@ -1,5 +1,5 @@
 from wagtail.core.blocks import (CharBlock, ChoiceBlock, RichTextBlock,
-                                 StreamBlock, StructBlock, TextBlock)
+                                 StreamBlock, StructBlock, TextBlock, )
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
 
@@ -12,6 +12,12 @@ class ImageBlock(StructBlock):
     image = ImageChooserBlock(required=True)
     caption = CharBlock(required=False)
     attribution = CharBlock(required=False)
+
+    alignment = ChoiceBlock(
+        [('left', 'Left'), ('center', 'Center'), ('right', 'Right')],
+        blank=False,
+        required=True
+    )
 
     class Meta:
         icon = 'image'
@@ -66,6 +72,23 @@ class BlockQuote(StructBlock):
         template = "blocks/blockquote.html"
 
 
+class BaseEmbedBlock(StructBlock):
+    embed_block = EmbedBlock(
+        help_text=
+        'Insert an embed URL e.g https://www.youtube.com/embed/SGJFWirQ3ks',
+        icon="fa-s15",
+        template="blocks/embed_block.html")
+    alignment = ChoiceBlock(
+        [('left', 'Left'), ('center', 'Center'), ('right', 'Right')],
+        blank=False,
+        required=True
+    )
+
+    class Meta:
+        icon = "title"
+        template = "blocks/embed_block.html"
+
+
 class TextEditorBlock(StructBlock):
     alignment = ChoiceBlock(
         [('left', 'Left'), ('center', 'Center'), ('right', 'Right')],
@@ -91,11 +114,7 @@ class BaseStreamBlock(StreamBlock):
     paragraph_block = TextEditorBlock()
     image_block = ImageBlock()
     block_quote = BlockQuote()
-    embed_block = EmbedBlock(
-        help_text=
-        'Insert an embed URL e.g https://www.youtube.com/embed/SGJFWirQ3ks',
-        icon="fa-s15",
-        template="blocks/embed_block.html")
+    embed_block = BaseEmbedBlock()
 
 
 class AboutStreamBlock(StreamBlock):
@@ -107,8 +126,4 @@ class AboutStreamBlock(StreamBlock):
     image_block = ImageBlock()
     full_width_image_block = FullWidthImageBlock()
     block_quote = BlockQuote()
-    embed_block = EmbedBlock(
-        help_text=
-        'Insert an embed URL e.g https://www.youtube.com/embed/SGJFWirQ3ks',
-        icon="fa-s15",
-        template="blocks/embed_block.html")
+    embed_block = BaseEmbedBlock()
