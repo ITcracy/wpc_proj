@@ -1,4 +1,26 @@
 {% load wagtailimages_tags %}
 
 {% image self.image original as block_image %}
-<img src="{{ block_image.url }}" alt="{{ self.caption }}" />
+
+{% if self.alignment == 'left' %}
+    <div class="container" >
+    <div class="row module-para-left" >
+       <img src="{{ block_image.url }}" alt="{{ self.caption }}" />
+    </div>
+  </div>
+
+    {% elif self.alignment == 'center' %}
+        <div class="container" >
+    <div class="row module-para-center" >
+       <img src="{{ block_image.url }}" alt="{{ self.caption }}" />
+    </div>
+  </div>
+
+    {% elif self.alignment == 'right' %}
+        <div class="container" >
+    <div class="row module-para-right" >
+       <img src="{{ block_image.url }}" alt="{{ self.caption }}" />
+    </div>
+  </div>
+
+{% endif %}
