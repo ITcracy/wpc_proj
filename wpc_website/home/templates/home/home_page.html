@@ -61,32 +61,40 @@
             </div>
             <div class="row multi-columns-row">
                 <div class="col-md-3 col-sm-6 col-xs-12">
+                    <a href="{{ page.agenda_page1.url }}">
                     <div class="features-item">
-                        <div class="features-icon"><span class="fas fa-hand-rock"></span></div>
+                        <div class="features-icon"><span class="fas fa-hand-rock"><a href="{{ page.agenda_page1.url }}"></a></span></div>
                         <h3 class="features-title font-alt">{{ page.agenda_h1 }}</h3>
                         <p>{{ page.agenda_body1 }}</p>
                     </div>
+                    </a>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-12">
+                    <a href="{{ page.agenda_page2.url }}">
                     <div class="features-item">
-                        <div class="features-icon"><span class="fas fa-hands-helping"></span></div>
+                        <div class="features-icon"><span class="fas fa-hands-helping"><a href="{{ page.agenda_page2.url }}"></a></span></div>
                         <h3 class="features-title font-alt">{{ page.agenda_h2 }}</h3>
                         <p>{{ page.agenda_body2 }}</p>
                     </div>
+                    </a>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-12">
+                    <a href="{{ page.agenda_page3.url }}">
                     <div class="features-item">
-                        <div class="features-icon"><span class="fas fa-users-cog"></span></div>
+                        <div class="features-icon"><span class="fas fa-users-cog"><a href="{{ page.agenda_page3.url }}"></a></span></div>
                         <h3 class="features-title font-alt">{{ page.agenda_h3 }}</h3>
                         <p>{{ page.agenda_body3 }}</p>
                     </div>
+                    </a>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-12 mb-30 pb-30">
+                    <a href="{{ page.agenda_page3.url }}">
                     <div class="features-item">
-                        <div class="features-icon"><span class="fas fa-people-carry"></span></div>
+                        <div class="features-icon"><span class="fas fa-people-carry"><a href="{{ page.agenda_page4.url }}"></a></span></div>
                         <h3 class="features-title font-alt">{{ page.agenda_h4 }}</h3>
                         <p>{{ page.agenda_body4 }}</p>
                     </div>
+                    </a>
                 </div>
 
                 <div class="module-title mt-40 pt-40 mb-20 pb-20">
@@ -174,24 +182,6 @@
                 </div>
             </div>
 
-                <!-- <div class="col-sm-6 col-md-3 col-lg-3"> -->
-                <!-- <div class="alt-features-item"> -->
-                <!-- <div class="alt-features-icon"><span class="icon-strategy"></span></div> -->
-                <!-- <h3 class="alt-features-title font-alt">Branding</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings. -->
-                <!-- </div> -->
-                <!-- <div class="alt-features-item"> -->
-                <!-- <div class="alt-features-icon"><span class="icon-tools-2"></span></div> -->
-                <!-- <h3 class="alt-features-title font-alt">Development</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings. -->
-                <!-- </div> -->
-                <!-- <div class="alt-features-item"> -->
-                <!-- <div class="alt-features-icon"><span class="icon-target"></span></div> -->
-                <!-- <h3 class="alt-features-title font-alt">Marketing</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings. -->
-                <!-- </div> -->
-                <!-- <div class="alt-features-item"> -->
-                <!-- <div class="alt-features-icon"><span class="icon-tools"></span></div> -->
-                <!-- <h3 class="alt-features-title font-alt">Design</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings. -->
-                <!-- </div> -->
-                <!-- </div> -->
                 <div class="md-8">
 
                     <div class="alt-services-image align-center" id="twitter_block">
@@ -203,25 +193,6 @@
                         {% endfor %}
                     </div>
                 </div>
-                <!-- <div class="col-sm-6 col-md-3 col-lg-3"> -->
-                <!-- <div class="alt-features-item"> -->
-                <!-- <div class="alt-features-icon"><span class="icon-camera"></span></div> -->
-                <!-- <h3 class="alt-features-title font-alt">Photography</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings. -->
-                <!-- </div> -->
-                <!-- <div class="alt-features-item"> -->
-                <!-- <div class="alt-features-icon"><span class="icon-mobile"></span></div> -->
-                <!-- <h3 class="alt-features-title font-alt">Mobile</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings. -->
-                <!-- </div> -->
-                <!-- <div class="alt-features-item"> -->
-                <!-- <div class="alt-features-icon"><span class="icon-linegraph"></span></div> -->
-                <!-- <h3 class="alt-features-title font-alt">Music</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings. -->
-                <!-- </div> -->
-                <!-- <div class="alt-features-item"> -->
-                <!-- <div class="alt-features-icon"><span class="icon-basket"></span></div> -->
-                <!-- <h3 class="alt-features-title font-alt">Shop</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings. -->
-                <!-- </div> -->
-                <!-- </div> -->
-            </div>
         </div>
     </section>
     {% endif %}
@@ -252,7 +223,7 @@
                 <div class="col-sm-6 col-md-4 col-lg-4">
                     <div class="post mb-20">
                         {% image childpage.image original as blog_post_image %}
-                        <div class="post-thumbnail"><a href="{{ childpage.url }}"><img src="{{ blog_post_image.url }}" alt="Blog-post Thumbnail" /></a></div>
+                        <div class="post-thumbnail"><a href="{{ childpage.url }}"><img src="{{ blog_post_image.url }}" alt="{{ childpage.title }}" /></a></div>
                         <div class="post-header font-alt">
                             <h2 class="post-title"><a href="{{ childpage.url }}">{{ childpage.title }}</a></h2>
                             {% if childpage.authors %}

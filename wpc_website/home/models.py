@@ -59,12 +59,47 @@ class HomePage(Page):
     vision_body = TextField(max_length=250, help_text='Max 250 chars.')
     agenda_h1 = models.CharField(max_length=50, help_text='Max 50 chars.')
     agenda_body1 = TextField(max_length=255, help_text='Max 255 chars.')
+    agenda_page1 = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text='Will open up the agenda page.',
+        verbose_name='Agenda Page Link')
+
     agenda_h2 = models.CharField(max_length=50, help_text='Max 50 chars.')
     agenda_body2 = TextField(max_length=255, help_text='Max 255 chars.')
+    agenda_page2 = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text='Will open up the agenda page.',
+        verbose_name='Agenda Page Link')
+
     agenda_h3 = models.CharField(max_length=50, help_text='Max 50 chars.')
     agenda_body3 = TextField(max_length=255, help_text='Max 255 chars.')
+    agenda_page3 = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text='Will open up the agenda page.',
+        verbose_name='Agenda Page Link')
+
     agenda_h4 = models.CharField(max_length=50, help_text='Max 50 chars.')
     agenda_body4 = TextField(max_length=255, help_text='Max 255 chars.')
+    agenda_page4 = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text='Will open up the agenda page.',
+        verbose_name='Agenda Page Link')
 
     home_video_title = models.CharField(null=True, blank=True,
                                         max_length=50, help_text='Max 50 chars.')
@@ -176,12 +211,16 @@ class HomePage(Page):
                 FieldPanel("vision_body", classname="full"),
                 FieldPanel("agenda_h1"),
                 FieldPanel("agenda_body1", classname="full"),
+                PageChooserPanel('agenda_page1'),
                 FieldPanel("agenda_h2"),
                 FieldPanel("agenda_body2", classname="full"),
+                PageChooserPanel('agenda_page2'),
                 FieldPanel("agenda_h3"),
                 FieldPanel("agenda_body3", classname="full"),
+                PageChooserPanel('agenda_page3'),
                 FieldPanel("agenda_h4"),
                 FieldPanel("agenda_body4", classname="full"),
+                PageChooserPanel('agenda_page4'),
             ],
             heading="Vision & Agenda",
             classname="collapsible"),
