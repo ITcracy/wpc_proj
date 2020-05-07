@@ -9,11 +9,11 @@
             <div class="post-thumbnail">
                 {% if org.website %}
                 <a href="{{ org.website }}">
-                    <img src="{{ org_image.url }}" alt="Organization logo"/>
+                    <img src="{{ org_image.url }}" alt="{{ org.name }}"/>
                 </a>
                 {% else %}
                 <a>
-                    <img src="{{ org_image.url }}" alt="Organization logo"/>
+                    <img src="{{ org_image.url }}" alt="{{ org.name }}"/>
                 </a>
                 {% endif %}
 
