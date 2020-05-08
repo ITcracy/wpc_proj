@@ -1,25 +1,17 @@
 {% load wagtailimages_tags %}
 
-{% if self.alignment == 'left' %}
-    <div class="container" >
-    <div class="row module-para-left" >
-       {{ self.embed_block }}
+{% image self.video_image original as block_image %}
+
+<section class="module bg-dark-60" data-background="{{ block_image.url }}">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="video-box">
+          <div class="video-box-icon"><a class="video-pop-up" href="{{ self.video_url }}"><span class="icon-video"></span></a></div>
+          <div class="video-title font-alt">{{ self.video_header }}</div>
+          <div class="video-subtitle font-alt">{{ self.video_intro }}</div>
+        </div>
+      </div>
     </div>
   </div>
-
-    {% elif self.alignment == 'center' %}
-        <div class="container" >
-    <div class="row module-para-center" >
-       {{ self.embed_block }}
-    </div>
-  </div>
-
-    {% elif self.alignment == 'right' %}
-        <div class="container" >
-    <div class="row module-para-right" >
-       {{ self.embed_block }}
-    </div>
-  </div>
-
-{% endif %}
-
+</section>

@@ -117,7 +117,7 @@ class HomePage(Page):
         null=True,
         blank=True,
         verbose_name='Video URL',
-        help_text='Paste the video embed url from youtube.')
+        help_text='Paste the video url from youtube.')
 
     featured_works_title = models.CharField(
         null=True,

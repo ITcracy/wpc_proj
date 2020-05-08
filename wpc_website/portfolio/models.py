@@ -80,7 +80,7 @@ class WorkImagePage(Page):
         verbose_name='Video URL',
         null=True,
         blank=True,
-        help_text='Paste the video embed url from youtube.')
+        help_text='Paste the video url from youtube.')
 
     work_desc = StreamField(
         BaseStreamBlock(), verbose_name='Work Description',

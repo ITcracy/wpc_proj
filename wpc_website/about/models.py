@@ -34,7 +34,7 @@ class AboutPage(Page):
         verbose_name='Video screenshot')
     about_video = models.URLField(
         verbose_name='Video URL',
-        help_text='Paste the video embed url from youtube.')
+        help_text='Paste the video url from youtube.')
     video_header = models.CharField(
         max_length=50,
         verbose_name='Video header',

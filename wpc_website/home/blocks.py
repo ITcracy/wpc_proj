@@ -1,5 +1,5 @@
 from wagtail.core.blocks import (CharBlock, ChoiceBlock, RichTextBlock,
-                                 StreamBlock, StructBlock, TextBlock, )
+                                 StreamBlock, StructBlock, TextBlock, URLBlock )
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
 
@@ -63,7 +63,7 @@ class BlockQuote(StructBlock):
     """
     Custom `StructBlock` that allows the user to attribute a quote to the author
     """
-    text = TextBlock()
+    text = TextBlock(blank=True, required=False)
     attribute_name = CharBlock(
         blank=True, required=False, label='e.g. Mary Berry')
 
@@ -73,16 +73,20 @@ class BlockQuote(StructBlock):
 
 
 class BaseEmbedBlock(StructBlock):
-    embed_block = EmbedBlock(
-        help_text=
-        'Insert an embed URL e.g https://www.youtube.com/embed/SGJFWirQ3ks',
-        icon="fa-s15",
-        template="blocks/embed_block.html")
-    alignment = ChoiceBlock(
-        [('left', 'Left'), ('center', 'Center'), ('right', 'Right')],
-        blank=False,
-        required=True
-    )
+    video_image = ImageChooserBlock(required=True,
+                                    help_text='Screenshot image of the video',
+                                    verbose_name='Video screenshot')
+    video_url = URLBlock(
+        verbose_name='Video URL',
+        help_text='Paste the video url from youtube.')
+    video_header = CharBlock(
+        blank=True, required=False, label='e.g. Title of the video',
+        help_text='Text to displayed on top of video image. Max 50 chars.')
+    video_intro = TextBlock(
+        max_length=300,
+        verbose_name='Video Intro',
+        blank=True, required=False,
+        help_text='Few lines to be displayed on the video image. Max 300 chars.')
 
     class Meta:
         icon = "title"
