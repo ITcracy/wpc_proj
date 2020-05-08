@@ -115,6 +115,7 @@ class BaseStreamBlock(StreamBlock):
     image_block = ImageBlock()
     block_quote = BlockQuote()
     embed_block = BaseEmbedBlock()
+    full_width_image_block = FullWidthImageBlock()
 
 
 class AboutStreamBlock(StreamBlock):

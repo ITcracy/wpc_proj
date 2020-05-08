@@ -885,7 +885,6 @@ blockquote {
   padding: 0;
   background-color: #000000;
   color: #FFFFFF;
-  background: light;
 }
 
 .font-alt {
@@ -1848,23 +1847,24 @@ Google map
 }
 
 .testimonial-text {
-  text-align: center;
-  font-style: normal;
-  font-size: 18px;
+  font-style: italic;
+  font-size: 12px;
 }
 
 .testimonial-caption {
-  text-align: center;
-  padding: 10px 0 0;
+  padding: 8px 0 0;
+  font-style: italic;
 }
 
 .testimonial-title {
-  font-size: 14px;
+  font-size: 12px;
+  font-style: italic;
 }
 
 .testimonial-descr {
   color: rgba(255, 255, 255, 0.5);
-  font-size: 11px;
+  font-size: 9px;
+  font-style: italic;
 }
 
 /*--------------------------------------------------------------
