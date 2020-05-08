@@ -1258,7 +1258,7 @@ General Styles - Owlcarousel
   font-family: "Roboto Condensed", sans-serif;
   text-transform: uppercase;
   letter-spacing: 3px;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bolder;
   transition: background, padding 0.4s ease-in-out 0s;
 }
@@ -1383,6 +1383,7 @@ General Styles - Owlcarousel
 	Header
 --------------------------------------------------------------*/
 .home-section {
+  padding: 60px 0;
   position: relative;
   background-color: #fff;
   background-repeat: no-repeat;
@@ -2722,5 +2723,16 @@ Google map
   .works-grid-4 .work-item,
   .works-grid-5 .work-item {
     width: 100%;
+  }
+  .module,
+.module-small {
+  position: relative;
+  padding: 60px 15px 0px 15px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+.navbar-toggle {
+    padding: 0px 20px;
   }
 }
