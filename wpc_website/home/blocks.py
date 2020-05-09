@@ -80,7 +80,7 @@ class BaseEmbedBlock(StructBlock):
         verbose_name='Video URL',
         help_text='Paste the video url from youtube.')
     video_header = CharBlock(
-        blank=True, required=False, label='e.g. Title of the video',
+        required=False, label='e.g. Title of the video',
         help_text='Text to displayed on top of video image. Max 50 chars.')
     video_intro = TextBlock(
         max_length=300,
@@ -101,7 +101,7 @@ class TextEditorBlock(StructBlock):
     )
     paragraph_text = RichTextBlock(
         icon="fa-paragraph",
-        features=['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'bold',
+        features=['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'bold', "u"
                   'italic', 'hr', 'ol', 'ul', 'link', 'document-link'])
 
     class Meta:
