@@ -26,23 +26,6 @@ class AboutPage(Page):
         help_text='Few lines to be displayed on the image. Max 300 chars.')
     about_body = StreamField(
         AboutStreamBlock(), verbose_name="Page body", blank=True)
-    video_image = models.ForeignKey(
-        'wagtailimages.Image',
-        on_delete=models.PROTECT,
-        related_name='+',
-        help_text='Screenshot image of the video',
-        verbose_name='Video screenshot')
-    about_video = models.URLField(
-        verbose_name='Video URL',
-        help_text='Paste the video url from youtube.')
-    video_header = models.CharField(
-        max_length=50,
-        verbose_name='Video header',
-        help_text='Text to displayed on top of video image. Max 50 chars.')
-    video_intro = TextField(
-        max_length=300,
-        verbose_name='Video Intro',
-        help_text='Few lines to be displayed on the video image. Max 300 chars.')
     lower_section = StreamField(
         AboutStreamBlock(), verbose_name="Lower section", blank=True)
     content_panels = Page.content_panels + [
@@ -54,12 +37,6 @@ class AboutPage(Page):
             ],
             heading="Hero Section"),
         StreamFieldPanel('about_body'),
-        MultiFieldPanel([
-            ImageChooserPanel('video_image'),
-            FieldPanel('about_video'),
-            FieldPanel('video_header'),
-            FieldPanel('video_intro')
-        ]),
         StreamFieldPanel('lower_section'),
     ]
     parent_page_types = ['home.HomePage']
