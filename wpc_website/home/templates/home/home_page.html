@@ -96,10 +96,11 @@
                     </div>
                     </a>
                 </div>
-
+                {% if page.more_about_us %}
                 <div class="module-title mt-40 pt-40 mb-20 pb-20">
-                    <a class=" btn btn-border-w btn-round" href="/about" style="background-color:#000000; color:#ffffff;">More About Us</a>
+                    <a class=" btn btn-border-w btn-round" href="{{ page.more_about_us.url }}" style="background-color:#000000; color:#ffffff;">More About Us</a>
                 </div>
+                {% endif %}
             </div>
         </div>
         <div class="large-text align-center"><a class="section-scroll" href="#works"><i class="fas fa-angle-double-down" style="color:#000000;"></i></a></div>

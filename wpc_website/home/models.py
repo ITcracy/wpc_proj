@@ -101,6 +101,15 @@ class HomePage(Page):
         help_text='Will open up the agenda page.',
         verbose_name='Agenda Page Link')
 
+    more_about_us = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text='Will open up the page having details about WPC.',
+        verbose_name='More About US Page Link')
+
     home_video_title = models.CharField(null=True, blank=True,
                                         max_length=50, help_text='Max 50 chars.')
     home_video_subtitle = models.CharField(
@@ -221,6 +230,7 @@ class HomePage(Page):
                 FieldPanel("agenda_h4"),
                 FieldPanel("agenda_body4", classname="full"),
                 PageChooserPanel('agenda_page4'),
+                PageChooserPanel('more_about_us'),
             ],
             heading="Vision & Agenda",
             classname="collapsible"),
