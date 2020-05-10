@@ -1625,17 +1625,22 @@ Google map
 .video-box-icon > a > span {
   line-height: 1.8;
   font-size: 40px;
-  color: #fff;
+  color: #FFFFFF;
 }
 
 .video-title {
   letter-spacing: 4px;
-  font-size: 30px;
+  font-size: 18px;
   margin: 10px 0 0;
+  font-weight: bolder;
+  color: #FFFFFF;
 }
 
 .video-subtitle {
   color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  font-weight: bold;
+  color: #FFFFFF;
 }
 
 /*--------------------------------------------------------------
@@ -2729,7 +2734,6 @@ Google map
   }
   .module,
 .module-small {
-
   padding: 60px 15px 0px 15px;
   background-repeat: no-repeat;
   background-position: 50% 50%;
