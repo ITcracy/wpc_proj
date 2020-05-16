@@ -141,7 +141,7 @@
             <ul class="works-grid works-grid-gut works-grid-3 works-hover-w" id="works-grid">
                 {% for childpage in page.featured_works.specific.get_recent_works %}
                 <li class="work-item illustration"><a href="{{ childpage.url }}">
-                        {% image childpage.preview_image original as work_image %}
+                        {% image childpage.preview_image fill-1920x1280 as work_image %}
                         <div class="work-image"><img src="{{ work_image.url }}" /></div>
                         <div class="work-caption font-alt">
                             <h3 class="work-title pb-5 pt-5">{{ childpage.title }}</h3>
