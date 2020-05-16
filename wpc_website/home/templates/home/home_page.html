@@ -144,8 +144,8 @@
                         {% image childpage.preview_image original as work_image %}
                         <div class="work-image"><img src="{{ work_image.url }}" /></div>
                         <div class="work-caption font-alt">
-                            <h3 class="work-title pb-10 pt-10">{{ childpage.title }}</h3>
-                            <div class="work-descr pb-10 pt-10">{{ childpage.work_summary|truncatewords:35 }}</div>
+                            <h3 class="work-title pb-5 pt-5">{{ childpage.title }}</h3>
+                            <div class="work-descr pb-5 pt-5">{{ childpage.work_summary|truncatewords:20 }}</div>
                         </div>
                     </a></li>
                 {% endfor %}
@@ -159,12 +159,12 @@
             <div class="row">
                 <div class="col-sm-6 col-md-8 col-lg-6 col-lg-offset-2">
                     <div class="callout-text font-alt">
-                        <h3 class="callout-title">Want to see more works?</h3>
-                        <p>We are always open to interesting projects.</p>
+                        <h3 class="callout-title">Want to see all our statements?</h3>
+                        <p>We are always socially aware & active.</p>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-4 col-lg-2">
-                    <div class="callout-btn-box"><a class="btn btn-w btn-round" href="{{ page.featured_works.url }}">Lets view portfolio</a></div>
+                <div class="col-sm-6 col-md-4 col-lg-2 pb-">
+                    <div class="callout-btn-box"><a class="btn btn-w btn-round" href="{{ page.featured_works.url }}">Lets view</a></div>
                 </div>
             </div>
         </div>
