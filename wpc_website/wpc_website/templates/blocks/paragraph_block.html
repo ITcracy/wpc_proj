@@ -24,5 +24,11 @@
        {{ self.paragraph_text }}
     </div>
   </div>
+    {% elif self.alignment == 'justify' %}
+        <div class="container" >
+    <div class="row module-para-justify" >
+       {{ self.paragraph_text }}
+    </div>
+  </div>
 
 {% endif %}
