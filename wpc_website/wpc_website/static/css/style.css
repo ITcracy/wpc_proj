@@ -934,6 +934,9 @@ blockquote {
 .module-para-center {
   text-align: center;
 }
+.module-para-justify{
+  text-align: justify;
+}
 
 .module-icon {
   text-align: center;
@@ -1548,6 +1551,9 @@ Google map
   margin: 0px 0;
   text-align: center;
 
+}
+.features-item p{
+  text-align: justify;
 }
 
 .features-icon,
